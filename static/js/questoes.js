@@ -130,6 +130,13 @@ function filtrarQuestoes(tipo) {
     let lista = allQuestoes;
     if (tipo === 'mc') lista = allQuestoes.filter(q => q.tipo === 'mc');
     if (tipo === 'vf') lista = allQuestoes.filter(q => q.tipo === 'vf');
+    if (tipo === 'erros') {
+        const resp = loadRespostas();
+        lista = allQuestoes.filter(q => {
+            const r = resp[q.id];
+            return r !== undefined && !(r === q.correta || r === q.correta);
+        });
+    }
     renderQuestoes(lista);
 }
 
