@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-header">
+    <h1>Questões</h1>
+    <p>100 questões estilo OAB &mdash; múltipla escolha e certo/errado</p>
+</div>
+
+<div class="questoes-filters">
+    <button class="btn btn-sm btn-primary" onclick="filtrarQuestoes('todas')">Todas</button>
+    <button class="btn btn-sm" onclick="filtrarQuestoes('mc')">Múltipla Escolha</button>
+    <button class="btn btn-sm" onclick="filtrarQuestoes('vf')">Certo/Errado</button>
+    <span style="flex:1;"></span>
+    <span id="acertosLabel" class="badge badge-green">0% de acertos</span>
+</div>
+
+<div id="questoesContainer"></div>
+
+<script src="{{ url_for('static', filename='js/questoes.js') }}"></script>
+{% endblock %}

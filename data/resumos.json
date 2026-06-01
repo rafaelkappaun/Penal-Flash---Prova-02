@@ -1,0 +1,84 @@
+{
+  "temas": [
+    {
+      "id": 1,
+      "titulo": "Adimplemento das Obrigações",
+      "pergunta": "Explique com suas palavras o que vem a ser adimplemento das obrigações e cite exemplos.",
+      "conceito_simples": "Adimplemento é o cumprimento voluntário da obrigação pelo devedor, fazendo exatamente aquilo que foi prometido. Exemplos: pagar em dinheiro, entregar um carro ou prestar um serviço contratado.",
+      "conceito_tecnico": "Adimplemento é o cumprimento exato e voluntário da prestação devida, seja ela de dar, fazer ou não fazer, realizado pelo devedor em favor do credor. Distingue-se da extinção da obrigação, pois o adimplemento é a causa natural e esperada de extinção, enquanto outras formas (novação, compensação, confusão) também extinguem a obrigação sem que tenha havido cumprimento da prestação original.",
+      "exemplo": "João contratou Maria para pintar sua casa por R$ 3.000. Maria pinta a casa (prestação de serviço) e João paga o valor (pagamento em dinheiro). Ambos adimpliram suas obrigações.",
+      "pegadinha": "O examinador pode cobrar que adimplemento NÃO se confunde com pagamento em dinheiro — pagamento é espécie de adimplemento. Todo pagamento é adimplemento, mas nem todo adimplemento é pagamento em sentido estrito.",
+      "artigos": "Arts. 304 a 333; 313; 319; 324 CC"
+    },
+    {
+      "id": 2,
+      "titulo": "Pagamento (conceito geral)",
+      "pergunta": "O que vem a ser 'pagamento'? Cite exemplos.",
+      "conceito_simples": "Pagamento é o cumprimento da obrigação, ou seja, realizar aquilo que foi combinado. Pode ser entregar um objeto, fazer um serviço ou pagar em dinheiro.",
+      "conceito_tecnico": "Em sentido amplo, pagamento é gênero que abrange toda e qualquer prestação do objeto da obrigação, seja dar, fazer ou não fazer. Em sentido estrito, pagamento significa exclusivamente a prestação em dinheiro. O Código Civil utiliza o termo em sentido amplo, tratando o pagamento como o meio natural de adimplemento e extinção da obrigação.",
+      "exemplo": "Sentido amplo: entregar um carro, construir uma casa, não construir um muro. Sentido estrito: pagar R$ 500 em dinheiro ao credor.",
+      "pegadinha": "Cuidado: a palavra 'pagamento' no CC é usada em sentido amplo, abrangendo toda prestação. O examinador pode tentar confundir dizendo que pagamento é apenas em dinheiro.",
+      "artigos": "Arts. 304 a 333 CC"
+    },
+    {
+      "id": 3,
+      "titulo": "Condições Subjetivas do Pagamento",
+      "pergunta": "Responda detalhadamente sobre as condições subjetivas do pagamento: a) quem deve pagar? b) terceiro interessado c) devedor pode opor-se? d) pagamento envolvendo transmissão de propriedade e) quem recebe? f) credor putativo g) pagamento a credor incapaz h) pessoas autorizadas a receber",
+      "conceito_simples": "As condições subjetivas tratam de quem pode pagar (devedor, terceiro interessado como fiador, ou terceiro não interessado) e quem pode receber (credor, representante, credor putativo). O devedor pode se opor ao pagamento por terceiro não interessado. Pagamento a credor incapaz só vale se reverter em proveito dele.",
+      "conceito_tecnico": "a) Devem pagar o devedor e também podem pagar terceiros interessados (co-devedor, fiador, avalista, garantidor) e terceiros não interessados (art. 304 CC). b) Terceiro interessado é aquele com vínculo jurídico com a dívida. c) Sim, o devedor pode opor-se ao pagamento por terceiro não interessado (art. 304, parágrafo único CC). d) Pagamento com transmissão de propriedade é válido se o terceiro agir em nome e por conta do devedor. e) Quem recebe é o credor, seu representante legal, ou pessoa autorizada por lei ou contrato. f) Credor putativo (art. 309 CC) é aquele que aparenta ser credor — o pagamento de boa-fé a ele é válido e extingue a obrigação. g) Pagamento a credor incapaz é válido se provado que reverteu em proveito do incapaz (art. 310 CC). h) Podem receber: representante legal, mandatário com poderes, e quem o credor autorizar.",
+      "exemplo": "O fiador de um contrato de aluguel paga o débito no lugar do inquilino (terceiro interessado). Um amigo do devedor, sem qualquer vínculo, paga a dívida (terceiro não interessado) — mas o devedor pode se opor.",
+      "pegadinha": "A pegadinha clássica: pagamento a credor incapaz. Muitos acham que é nulo, mas o CC (art. 310) diz que é válido se reverter em proveito do incapaz. Outra: credor putativo — estudar que o pagamento de boa-fé é válido mesmo que a pessoa não seja o verdadeiro credor.",
+      "artigos": "Arts. 304 a 312 CC"
+    },
+    {
+      "id": 4,
+      "titulo": "Condições Objetivas do Pagamento",
+      "pergunta": "Responda detalhadamente sobre as condições objetivas do pagamento: a) objeto do pagamento b) prova do pagamento c) prestação diversa d) obrigação divisível e) prestação em dinheiro f) teoria da imprevisão g) ouro/moeda estrangeira h) regular quitação i) formas de quitação j) quotas periódicas k) devolução do título",
+      "conceito_simples": "As condições objetivas tratam do objeto do pagamento: deve ser exatamente a prestação devida, em dinheiro (com correção monetária e juros), divisível ou indivisível. A quitação (recibo) comprova o pagamento. Exceções como dação em pagamento permitem prestação diversa.",
+      "conceito_tecnico": "a) O objeto do pagamento é a prestação devida, podendo ser de dar, fazer ou não fazer. b) A prova do pagamento é a quitação (recibo); paga a dívida principal, presume-se pagos os juros. c) Regra: não se pode exigir prestação diversa (art. 313 CC); exceção: dação em pagamento. d) Obrigação divisível permite pagamento parcial, salvo disposição em contrário. e) Prestação em dinheiro segue o princípio do nominalismo, com correção monetária e juros legais. f) Teoria da imprevisão (art. 478 CC): onerosidade excessiva por fato extraordinário e imprevisível permite revisão ou resolução do contrato. g) Não se pode pagar em ouro ou moeda estrangeira (art. 315 CC e Decreto-Lei 857/69), salvo exceções legais. h) Regular quitação (art. 319 CC): recibo com nome do devedor, valor, data e assinatura. i) Formas: recibo particular, escritura pública, presunção legal, devolução do título. j) Quotas periódicas: pagamento e quitação são periódicos; juros podem incidir em caso de mora. k) A devolução do título é meio de prova do adimplemento (art. 324 CC), mas admite prova em contrário de que não houve pagamento.",
+      "exemplo": "João deve R$ 10.000 a Pedro. João paga R$ 10.000 em espécie e recebe quitação. Se o título original for devolvido, presume-se pago. Se João quisesse pagar com um carro, só seria possível se Pedro aceitasse (dação em pagamento).",
+      "pegadinha": "Atenção: a regra é que o pagamento deve ser em moeda corrente nacional (Real). O examinador pode testar se o aluno sabe que contrato em moeda estrangeira é nulo, salvo exceções (contratos internacionais, câmbio). Outra pegadinha: a devolução do título gera presunção relativa de pagamento — pode ser ilidida.",
+      "artigos": "Arts. 313 a 326 CC; art. 478 CC; Decreto-Lei 857/69"
+    },
+    {
+      "id": 5,
+      "titulo": "Lugar do Pagamento",
+      "pergunta": "Fale sobre o lugar do pagamento.",
+      "conceito_simples": "O lugar do pagamento pode ser no domicílio do devedor (obrigação quesível) ou no domicílio do credor (obrigação portável). Se nada for acordado, presume-se que o pagamento deve ser feito no domicílio do devedor.",
+      "conceito_tecnico": "O lugar do pagamento pode ser convencionado pelas partes ou determinado por lei. Na obrigação quesível, o pagamento é feito no domicílio do devedor (art. 327 CC), sendo este o local onde o credor deve procurar o devedor para receber. Na obrigação portável, o pagamento é feito no domicílio do credor. Não havendo estipulação em contrário, e se a natureza da obrigação ou as circunstâncias não indicarem outro local, presume-se quesível a obrigação, ou seja, paga-se no domicílio do devedor.",
+      "exemplo": "Se João (devedor) mora em SP e Maria (credora) no RJ, sem acordo sobre local, João deve pagar em SP (quesível). Mas se combinaram 'pago na casa da Maria', torna-se portável.",
+      "pegadinha": "Muitos confundem: a regra supletiva no silêncio das partes é que a obrigação é quesível (no domicílio do devedor), e não portável. O examinador pode inverter essa presunção.",
+      "artigos": "Arts. 327 a 330 CC"
+    },
+    {
+      "id": 6,
+      "titulo": "Tempo do Pagamento",
+      "pergunta": "Explique o que vem a ser 'tempo do pagamento', abordando: dia do pagamento, cobrança de dívida antes do prazo, devedor solvente. Explique, ainda, o que acontecerá quando se tratar de obrigação condicional.",
+      "conceito_simples": "Tempo do pagamento é o momento em que a obrigação deve ser cumprida, geralmente na data de vencimento. Se não houver prazo, o credor pode cobrar imediatamente. O devedor solvente não pode ser obrigado a pagar antes do prazo. Na obrigação condicional suspensiva, o pagamento só é devido após implemento da condição.",
+      "conceito_tecnico": "O tempo do pagamento refere-se ao vencimento da obrigação. Havendo prazo certo, o pagamento deve ocorrer no dia estipulado, presumindo-se em favor do devedor o benefício do prazo (art. 331 CC). O credor não pode exigir a dívida antes de vencida. O devedor solvente (que cumpre regularmente suas obrigações) não pode ser cobrado antes do prazo. Nas obrigações condicionais, se a condição for suspensiva (arts. 125-126 CC), a obrigação só é exigível após o implemento da condição; se resolutiva, a obrigação é exigível desde logo, mas se resolve com o implemento da condição.",
+      "exemplo": "João empresta R$ 5.000 a Maria para pagar em 10 parcelas mensais. Maria não pode ser cobrada antes do vencimento de cada parcela. Se a obrigação era 'dar R$ 5.000 se seu filho passar no vestibular' (condição suspensiva), só paga se o filho passar.",
+      "pegadinha": "O examinador pode perguntar sobre o 'benefício do prazo' — ele é do devedor, salvo disposição em contrário. Outra: confundir condição suspensiva com resolutiva. Suspensiva: só exige com a condição. Resolutiva: exige desde logo, mas se resolve.",
+      "artigos": "Arts. 125-126; 331-333 CC"
+    },
+    {
+      "id": 7,
+      "titulo": "Formas Especiais de Pagamento",
+      "pergunta": "Responda detalhadamente sobre as formas especiais de pagamento: a) pagamento por consignação b) pagamento com sub-rogação c) imputação do pagamento d) dação em pagamento e) novação f) compensação g) confusão h) remissão de dívidas",
+      "conceito_simples": "São formas alternativas de extinguir obrigações além do pagamento direto: consignação (depósito judicial), sub-rogação (credor substituído), imputação (escolher qual dívida pagar), dação (pagar com coisa diversa), novação (criar nova dívida), compensação (credores mútuos), confusão (credor e devedor viram mesma pessoa) e remissão (perdão da dívida).",
+      "conceito_tecnico": "a) Consignação (arts. 334-345 CC): depósito judicial ou extrajudicial quando o credor recusa receber, é incapaz, desconhecido, ou há dúvida sobre quem receber. b) Sub-rogação (arts. 346-351 CC): legal (art. 346, de pleno direito) ou convencional (art. 347); o terceiro que paga assume os direitos do credor (art. 349 CC). c) Imputação (arts. 352-355 CC): o devedor escolhe qual dívida pagar, depois o credor, e, por fim, a lei determina. d) Dação em pagamento (arts. 356-359 CC): credor aceita prestação diversa; requisitos: consentimento do credor e entrega de coisa diversa. e) Novação (arts. 360-367 CC): extinção da dívida anterior pela criação de nova; requisitos: obrigação anterior, nova obrigação, animus novandi e capacidade; extingue a dívida anterior e seus acessórios. f) Compensação (arts. 368-380 CC): quando duas pessoas são credoras e devedoras entre si; pode ser legal, voluntária ou judicial; extingue as obrigações até o menor valor. g) Confusão (arts. 381-384 CC): credor e devedor se reúnem na mesma pessoa; extingue a obrigação total ou parcialmente. h) Remissão (arts. 385-388 CC): perdão da dívida pelo credor, expressa ou tacitamente; extingue total ou parcialmente a obrigação.",
+      "exemplo": "a) Consignação: credor se recusa a receber o aluguel, devedor deposita em juízo. b) Sub-rogação: fiador paga e se sub-roga nos direitos do credor. c) Imputação: devedor de duas dívidas diz 'estou pagando a dívida do carro'. d) Dação: devedor deve R$ 10 mil e credor aceita receber um relógio. e) Novação: dívida de R$ 5 mil é substituída por novo contrato de R$ 6 mil. f) Compensação: A deve R$ 100 a B, que deve R$ 80 a A — compensam-se, A paga R$ 20. g) Confusão: filho herda dívida do pai falecido (era credor e vira devedor). h) Remissão: credor rasga o título e perdoa a dívida.",
+      "pegadinha": "Cuidado: na dação em pagamento, o credor NÃO é obrigado a aceitar prestação diversa — depende de consentimento. Outra: na novação, exige-se o animus novandi (vontade de novar), sem o qual há mera modificação contratual. Na compensação, a dívida deve ser líquida, vencida e de coisas fungíveis.",
+      "artigos": "Arts. 334 a 388 CC"
+    },
+    {
+      "id": 8,
+      "titulo": "Inadimplemento das Obrigações",
+      "pergunta": "Responda detalhadamente sobre o inadimplemento das obrigações: a) inadimplemento absoluto x relativo (mora) b) obrigações de não fazer c) bens do devedor d) caso fortuito/força maior e) mora f) perdas e danos g) juros legais h) cláusula penal i) arras ou sinal",
+      "conceito_simples": "Inadimplemento é o descumprimento da obrigação. Pode ser absoluto (prestação inútil ao credor) ou relativo/mora (atraso). Caso fortuito e força maior excluem responsabilidade. As consequências incluem perdas e danos, juros, cláusula penal (multa) e arras (sinal).",
+      "conceito_tecnico": "a) Inadimplemento absoluto: a prestação tornou-se impossível ou inútil ao credor. Mora (art. 394 CC): atraso culposo no cumprimento, ainda possível e útil. b) Obrigações de não fazer (art. 250 CC): inadimplemento ocorre quando o devedor pratica o ato que se obrigou a não praticar. c) Bens do devedor respondem pela dívida (art. 789 CPC) — responsabilidade patrimonial. d) Caso fortuito ou força maior (art. 393 CC): exclui a responsabilidade, salvo se o devedor expressamente assumiu o risco. e) Mora: mora do devedor (solvendi) — não paga no vencimento (art. 397 CC); mora do credor (accipiendi) — recusa em receber. Purgação da mora: reparação do atraso. Prestação inútil: converte mora em inadimplemento absoluto. f) Perdas e danos (arts. 402-405 CC): danos emergentes (o que efetivamente perdeu) + lucros cessantes (o que razoavelmente deixou de ganhar), juros e correção monetária. g) Juros legais (art. 406 CC): 1% ao mês (CC) ou taxa Selic; juros moratórios (mora) e compensatórios (remuneração do capital). h) Cláusula penal (arts. 408-416 CC): multa contratual; compensatória (substitui a prestação) ou moratória (penaliza o atraso); limite de 10% (ou 2% no CDC). i) Arras ou sinal (arts. 417-420 CC): confirmatórias (parte do pagamento) ou penitenciais (direito de arrependimento); em caso de descumprimento, a parte inocente pode exigir perdas e danos ou ficar com as arras.",
+      "exemplo": "a) Absoluto: contrato de pintura, casa pegou fogo antes. Relativo: pintor atrasa 2 dias. b) Prometeu não construir muro, construiu — inadimplemento. c) Devedor não paga, credor penhora o carro dele. d) Terremoto destrói o imóvel a ser entregue — exclui responsabilidade. e) Devedor paga 10 dias após o vencimento (mora solvendi). f) Atraso na entrega gerou prejuízo de R$ 500 + lucro cessante de R$ 300. g) Dívida de R$ 1.000 em mora: juros de 1% ao mês. h) Multa de 10% sobre o valor do contrato por atraso. i) Comprador dá R$ 5.000 de sinal; se desiste, perde o sinal.",
+      "pegadinha": "A pegadinha mais comum: diferença entre inadimplemento absoluto e mora. Se a prestação ainda é útil, é mora; se não serve mais, é inadimplemento absoluto. Outra: caso fortuito/força maior exclui responsabilidade, EXCETO se o devedor assumiu o risco contratualmente. Sobre arras: confirmatórias não permitem arrependimento; penitenciais permitem, com perda ou devolução em dobro.",
+      "artigos": "Arts. 250, 393, 394-416, 417-420 CC; art. 789 CPC"
+    }
+  ]
+}

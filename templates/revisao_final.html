@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-header">
+    <h1>Revisão Final</h1>
+    <p>Leitura rápida de 15 minutos com os pontos mais importantes</p>
+</div>
+
+<div class="section-tabs">
+    <button class="tab-btn active" onclick="mudarAba('conceitos', this)">&#x1F4DD; Conceitos (50)</button>
+    <button class="tab-btn" onclick="mudarAba('pegadinhas', this)">&#x26A0; Pegadinhas (30)</button>
+    <button class="tab-btn" onclick="mudarAba('artigos', this)">&#x2696; Artigos (20)</button>
+</div>
+
+<div id="sectionConceitos" class="revisao-section active">
+    <div class="revisao-list" id="conceitosList"></div>
+</div>
+<div id="sectionPegadinhas" class="revisao-section">
+    <div class="revisao-list" id="pegadinhasList"></div>
+</div>
+<div id="sectionArtigos" class="revisao-section">
+    <div class="revisao-list" id="artigosList"></div>
+</div>
+
+<script>
+const STORAGE_KEY = 'civil_flash_revisao';
+
+function loadRevisao() {
+    const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    return data;
+}
+
+function saveRevisao(id) {
+    const data = loadRevisao();
+    data[id] = true;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function mudarAba(aba, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.revisao-section').forEach(s => s.classList.remove('active'));
+    document.getElementById('section' + aba.charAt(0).toUpperCase() + aba.slice(1)).classList.add('active');
+}
+
+async function carregarDados() {
+    const r = await fetch('/api/revisao-final');
+    const data = await r.json();
+    const lida = loadRevisao();
+
+    function renderList(arr, containerId, type) {
+        const c = document.getElementById(containerId);
+        c.innerHTML = arr.map(item => {
+            const key = type + '_' + item.id;
+            const foiLida = lida[key];
+            return type === 'artigos' ? `
+                <div class="revisao-item" onclick="saveRevisao('${key}')" style="${foiLida ? 'opacity:0.6;' : ''}">
+                    <div class="revisao-artigo">${item.artigo}</div>
+                    <div class="revisao-texto">${item.texto}</div>
+                    ${item.explicacao ? `<div class="revisao-explicacao">${item.explicacao}</div>` : ''}
+                </div>
+            ` : `
+                <div class="revisao-item" onclick="saveRevisao('${key}')" style="${foiLida ? 'opacity:0.6;' : ''}">
+                    <div class="revisao-numero">${item.id}</div>
+                    <div class="revisao-texto">${item.texto}</div>
+                    ${item.explicacao ? `<div class="revisao-explicacao">${item.explicacao}</div>` : ''}
+                </div>
+            `;
+        }).join('');
+    }
+
+    renderList(data.conceitos, 'conceitosList', 'conceito');
+    renderList(data.pegadinhas, 'pegadinhasList', 'pegadinha');
+    renderList(data.artigos, 'artigosList', 'artigo');
+}
+
+carregarDados();
+</script>
+{% endblock %}

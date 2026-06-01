@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-header">
+    <h1>Flashcards</h1>
+    <p>150 cartas pergunta-resposta para revisão rápida</p>
+</div>
+
+<div class="flashcard-container">
+    <div class="questoes-filters" style="justify-content:center;margin-bottom:20px;">
+        <button class="btn btn-sm" onclick="shuffleCards()">&#x1F500; Embaralhar</button>
+        <button class="btn btn-sm" onclick="resetProgress()">&#x1F504; Reiniciar Progresso</button>
+    </div>
+
+    <div class="flashcard" id="flashcard" onclick="revealCard()">
+        <div class="flashcard-front" id="cardFront">
+            <div class="flashcard-question" id="questionText">Carregando...</div>
+            <div class="flashcard-tema" id="cardTema"></div>
+            <div class="flashcard-hint">Clique para revelar a resposta</div>
+        </div>
+        <div class="flashcard-back" id="cardBack">
+            <div class="flashcard-answer" id="answerText"></div>
+            <div class="flashcard-tema" id="cardTemaBack"></div>
+            <div class="flashcard-hint">Clique para voltar</div>
+        </div>
+    </div>
+
+    <div class="flashcard-controls">
+        <button class="btn btn-sm" onclick="prevCard()">&larr; Anterior</button>
+        <button class="btn btn-sm" onclick="nextCard()">Próximo &rarr;</button>
+    </div>
+
+    <div class="flashcard-progress">
+        <span id="cardCounter">1 / 150</span>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width:0%"></div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/flashcards.js') }}"></script>
+{% endblock %}

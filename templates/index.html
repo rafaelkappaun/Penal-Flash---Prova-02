@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="dashboard">
+    <header class="dashboard-header">
+        <h1>Civil Flash</h1>
+        <p class="subtitle">Revisão 2&ordm; Bimestre &mdash; Direito Civil &mdash; Obrigações</p>
+        <div style="margin-top:8px;display:inline-block;background:rgba(245,166,35,0.15);color:var(--accent-gold);padding:4px 16px;border-radius:20px;font-size:13px;font-weight:600;">&#x23F3; Prova Amanhã!</div>
+    </header>
+
+    <div class="stats-grid">
+        <div class="stat-card" onclick="window.location.href='{{ url_for('resumos') }}'">
+            <div class="stat-icon">&#x1F4DA;</div>
+            <div class="stat-info">
+                <span class="stat-number">8</span>
+                <span class="stat-label">Resumos</span>
+            </div>
+        </div>
+        <div class="stat-card" onclick="window.location.href='{{ url_for('flashcards') }}'">
+            <div class="stat-icon">&#x1F0CF;</div>
+            <div class="stat-info">
+                <span class="stat-number">80</span>
+                <span class="stat-label">Flashcards</span>
+            </div>
+        </div>
+        <div class="stat-card" onclick="window.location.href='{{ url_for('questoes') }}'">
+            <div class="stat-icon">&#x270D;</div>
+            <div class="stat-info">
+                <span class="stat-number">50</span>
+                <span class="stat-label">Questões</span>
+            </div>
+        </div>
+        <div class="stat-card" onclick="window.location.href='{{ url_for('revisao_final') }}'">
+            <div class="stat-icon">&#x2B50;</div>
+            <div class="stat-info">
+                <span class="stat-number">65</span>
+                <span class="stat-label">Revisão Final</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="modules-grid">
+        <a href="{{ url_for('resumos') }}" class="module-card" style="--card-hue: 220;">
+            <div class="module-icon">&#x1F4DA;</div>
+            <h3>Resumos</h3>
+            <p>8 temas do 2&ordm; Bimestre mapeados diretamente das perguntas da prova. Conceito, técnico, exemplo, pegadinha e artigos.</p>
+            <span class="module-link">Acessar &rarr;</span>
+        </a>
+        <a href="{{ url_for('flashcards') }}" class="module-card" style="--card-hue: 180;">
+            <div class="module-icon">&#x1F0CF;</div>
+            <h3>Flashcards</h3>
+            <p>80 cartas pergunta-resposta focadas nos 8 tópicos da prova. Progresso salvo no navegador.</p>
+            <span class="module-link">Acessar &rarr;</span>
+        </a>
+        <a href="{{ url_for('questoes') }}" class="module-card" style="--card-hue: 140;">
+            <div class="module-icon">&#x270D;</div>
+            <h3>Questões</h3>
+            <p>50 questões estilo prova. 35 múltipla escolha + 15 certo/errado. Gabarito comentado com artigos do CC.</p>
+            <span class="module-link">Acessar &rarr;</span>
+        </a>
+        <a href="{{ url_for('simulado') }}" class="module-card" style="--card-hue: 320;">
+            <div class="module-icon">&#x23F1;</div>
+            <h3>Simulado</h3>
+            <p>Simulado de 20 ou 30 questões sorteado do banco. Timer opcional e relatório de desempenho por tema.</p>
+            <span class="module-link">Acessar &rarr;</span>
+        </a>
+        <a href="{{ url_for('revisao_final') }}" class="module-card" style="--card-hue: 40;">
+            <div class="module-icon">&#x2B50;</div>
+            <h3>Revisão Final</h3>
+            <p>30 conceitos essenciais, 20 pegadinhas clássicas e 15 artigos mais cobrados. Leitura rápida pré-prova.</p>
+            <span class="module-link">Acessar &rarr;</span>
+        </a>
+        <a href="{{ url_for('professor') }}" class="module-card" style="--card-hue: 280;">
+            <div class="module-icon">&#x1F393;</div>
+            <h3>Modo Professor</h3>
+            <p>Selecione um dos 8 temas e visualize nos modos Simples, Jurídico ou Prova &mdash; igual ao questionário.</p>
+            <span class="module-link">Acessar &rarr;</span>
+        </a>
+    </div>
+
+    <div style="margin-top:40px;padding:24px;background:var(--bg-card);border:1px solid var(--border-glass);border-radius:var(--radius-md);">
+        <h3 style="margin-bottom:12px;font-size:16px;">&#x1F4DD; Questionário da Prova &mdash; 2&ordm; Bimestre</h3>
+        <ol style="color:var(--text-secondary);font-size:13px;line-height:1.8;padding-left:20px;">
+            <li>Adimplemento das Obrigações</li>
+            <li>Pagamento (conceito geral)</li>
+            <li>Condições Subjetivas do Pagamento (a-h)</li>
+            <li>Condições Objetivas do Pagamento (a-k)</li>
+            <li>Lugar do Pagamento</li>
+            <li>Tempo do Pagamento</li>
+            <li>Formas Especiais de Pagamento (a-h)</li>
+            <li>Inadimplemento das Obrigações (a-i)</li>
+        </ol>
+    </div>
+</div>
+{% endblock %}

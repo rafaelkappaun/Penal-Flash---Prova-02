@@ -1,0 +1,484 @@
+{
+  "flashcards": [
+    {
+      "id": 1,
+      "pergunta": "O que é adimplemento das obrigações?",
+      "resposta": "Adimplemento é o cumprimento voluntário e exato da prestação devida, realizado conforme o conteúdo da obrigação. Diferencia-se da extinção da obrigação, que pode ocorrer por outras causas independentes do cumprimento (como a novação ou confusão). O adimplemento é a forma natural e desejada de satisfação do crédito.",
+      "tema": "Adimplemento das Obrigações"
+    },
+    {
+      "id": 2,
+      "pergunta": "O adimplemento se confunde com pagamento no Direito Civil brasileiro?",
+      "resposta": "Não. O pagamento é uma espécie de adimplemento, referindo-se especificamente às obrigações de dar quantia certa (dinheiro). O adimplemento é gênero que abrange todas as formas de cumprimento da prestação, seja ela de dar, fazer ou não fazer. Todo pagamento é adimplemento, mas nem todo adimplemento é pagamento.",
+      "tema": "Adimplemento das Obrigações"
+    },
+    {
+      "id": 3,
+      "pergunta": "Quais são os exemplos de adimplemento de obrigação de fazer?",
+      "resposta": "Na obrigação de fazer, o adimplemento ocorre com a execução do serviço ou obra prometida, como construir uma casa, prestar consultoria jurídica ou pintar um quadro. Se a obrigação for infungível, apenas o devedor pode adimplir; se fungível, terceiro pode realizar a prestação. O CC, arts. 247 a 249 tratam das obrigações de fazer.",
+      "tema": "Adimplemento das Obrigações"
+    },
+    {
+      "id": 4,
+      "pergunta": "Qual a diferença entre adimplemento e extinção da obrigação sem adimplemento?",
+      "resposta": "No adimplemento, a prestação é cumprida voluntariamente pelo devedor, satisfazendo o crédito. Já a extinção sem adimplemento ocorre por fatos jurídicos diversos, como a confusão (CC, art. 381), a remissão (CC, art. 385) ou a prescrição, que extinguem a obrigação sem que haja cumprimento da prestação original.",
+      "tema": "Adimplemento das Obrigações"
+    },
+    {
+      "id": 5,
+      "pergunta": "O adimplemento substantivo pode ocorrer em obrigações alternativas?",
+      "resposta": "Sim. Nas obrigações alternativas (CC, art. 252), o adimplemento ocorre com a entrega de uma das prestações devidas, uma vez realizada a escolha (pelo devedor, salvo disposição em contrário). Se ambas as prestações se tornarem impossíveis sem culpa do devedor, a obrigação se extingue sem adimplemento.",
+      "tema": "Adimplemento das Obrigações"
+    },
+    {
+      "id": 6,
+      "pergunta": "O que é adimplemento parcial e quando é admitido?",
+      "resposta": "Adimplemento parcial é o cumprimento incompleto da prestação, em que o devedor entrega parte do devido. Em regra, o credor não é obrigado a receber prestação diversa da contratada, ainda que mais valiosa (CC, art. 313). Contudo, nas obrigações divisíveis, o credor pode ser obrigado a receber pagamento parcial (CC, art. 314).",
+      "tema": "Adimplemento das Obrigações"
+    },
+    {
+      "id": 7,
+      "pergunta": "O que é pagamento no sentido técnico do Direito Civil?",
+      "resposta": "Pagamento, no sentido técnico, é o cumprimento voluntário de uma prestação devida, consistente na entrega de dinheiro ou de coisa fungível. É espécie do gênero adimplemento, aplicável especificamente às obrigações pecuniárias (CC, arts. 304 a 333). A doutrina moderna, contudo, usa pagamento como sinônimo de adimplemento em sentido amplo.",
+      "tema": "Pagamento"
+    },
+    {
+      "id": 8,
+      "pergunta": "Quais são as espécies de pagamento no Código Civil?",
+      "resposta": "O Código Civil trata do pagamento direto (arts. 304-333) e das formas especiais de pagamento: consignação em pagamento (arts. 334-345), sub-rogação (arts. 346-351), imputação do pagamento (arts. 352-355), dação em pagamento (arts. 356-359), novação (arts. 360-367), compensação (arts. 368-380), confusão (arts. 381-384) e remissão (arts. 385-388).",
+      "tema": "Pagamento"
+    },
+    {
+      "id": 9,
+      "pergunta": "Qual a diferença entre pagamento direto e pagamento indireto?",
+      "resposta": "Pagamento direto é aquele em que o devedor cumpre exatamente a prestação devida, entregando ao credor o objeto devido. Pagamento indireto (ou forma especial de pagamento) é aquele que substitui o cumprimento original por outro meio, como a dação (dar coisa diversa) ou a novação (criar nova obrigação).",
+      "tema": "Pagamento"
+    },
+    {
+      "id": 10,
+      "pergunta": "O pagamento exige vontade de adimplir?",
+      "resposta": "Sim. O pagamento é ato jurídico voluntário que exige vontade consciente de cumprir a prestação. Se o pagamento for feito por erro (ex.: pagar dívida já quitada), cabe repetição do indébito (CC, art. 876). O pagamento deve ser feito ao credor ou a quem legalmente o represente, sob pena de não validade.",
+      "tema": "Pagamento"
+    },
+    {
+      "id": 11,
+      "pergunta": "O pagamento feito a menor de idade (credor incapaz) é válido?",
+      "resposta": "Em regra, não. O pagamento feito a credor incapaz sem assistência só é válido se provado que o valor foi revertido em benefício do incapaz (CC, art. 310). O devedor que paga ao incapaz sem essa comprovação pode ser obrigado a pagar novamente ao representante legal.",
+      "tema": "Pagamento"
+    },
+    {
+      "id": 12,
+      "pergunta": "O pagamento pode ser feito em moeda estrangeira?",
+      "resposta": "Em regra, não. A moeda estrangeira não é meio de pagamento legal no Brasil (Decreto-Lei 857/69). Pode ser estipulada para indexação, desde que o pagamento seja convertido em moeda nacional no momento do cumprimento (CC, art. 315, parágrafo único). Exceções existem para contratos internacionais e câmbio.",
+      "tema": "Pagamento"
+    },
+    {
+      "id": 13,
+      "pergunta": "Quem pode receber o pagamento?",
+      "resposta": "O pagamento deve ser feito ao credor ou a quem o represente legalmente (CC, art. 308). Também é válido o pagamento feito ao credor putativo (art. 309), a pessoa autorizada por ele (mandatário), ou ao terceiro que, após o pagamento, transmita a propriedade ao credor (art. 311). Pagamento a pessoa não autorizada só vale se ratificado.",
+      "tema": "Condições Subjetivas do Pagamento"
+    },
+    {
+      "id": 14,
+      "pergunta": "Quem pode pagar a dívida?",
+      "resposta": "Podem pagar: o devedor (pessoalmente ou por representante), o terceiro interessado (que possui vínculo jurídico com a dívida, como fiador ou coobrigado) e o terceiro não interessado (qualquer pessoa sem vínculo com a obrigação). O terceiro não interessado, contudo, só pode pagar com a anuência ou sem oposição do devedor (CC, art. 304, parágrafo único).",
+      "tema": "Condições Subjetivas do Pagamento"
+    },
+    {
+      "id": 15,
+      "pergunta": "O que é terceiro interessado no pagamento?",
+      "resposta": "Terceiro interessado é aquele que tem interesse jurídico no adimplemento da obrigação, pois pode ser afetado pelo inadimplemento. São exemplos: o fiador, o avalista, o coobrigado solidário, o sublocatário, o usufrutuário e o adquirente do imóvel hipotecado. O terceiro interessado pode pagar e sub-rogar-se nos direitos do credor (CC, art. 346, II e III).",
+      "tema": "Condições Subjetivas do Pagamento"
+    },
+    {
+      "id": 16,
+      "pergunta": "O terceiro não interessado pode pagar a dívida contra a vontade do devedor?",
+      "resposta": "Depende. Se o devedor se opõe expressamente ao pagamento pelo terceiro não interessado, este só pode pagar se houver autorização do credor. Pagando contra a oposição do devedor, o terceiro não tem direito a reembolso (CC, art. 304, parágrafo único).",
+      "tema": "Condições Subjetivas do Pagamento"
+    },
+    {
+      "id": 17,
+      "pergunta": "Se o terceiro paga a dívida sem oposição, quais são seus direitos?",
+      "resposta": "O terceiro não interessado que paga sem oposição do devedor tem direito a reembolso (ação de regresso) e pode exigir a restituição do que pagou, mas não se sub-roga automaticamente nos direitos do credor. Já o terceiro interessado, ao pagar, sub-roga-se legalmente em todos os direitos, ações, privilégios e garantias do credor originário (CC, art. 346).",
+      "tema": "Condições Subjetivas do Pagamento"
+    },
+    {
+      "id": 18,
+      "pergunta": "O que é credor putativo?",
+      "resposta": "Credor putativo é aquele que aparenta ser o credor, com base em circunstâncias objetivas que geram a convicção de que é o verdadeiro titular do crédito. O pagamento feito a ele de boa-fé é válido e extingue a obrigação, mesmo que posteriormente se descubra que não era o verdadeiro credor (CC, art. 309). Exemplo: pagamento ao herdeiro aparente.",
+      "tema": "Condições Subjetivas do Pagamento"
+    },
+    {
+      "id": 19,
+      "pergunta": "O pagamento feito a credor incapaz é nulo?",
+      "resposta": "Não é nulo de pleno direito, mas é anulável ou ineficaz. O CC, art. 310 estabelece que o pagamento feito a credor incapaz (menor, interdito) só libera o devedor se provado que reverteu em benefício do incapaz. Caso contrário, o devedor pode ser obrigado a pagar novamente ao representante legal do incapaz.",
+      "tema": "Condições Subjetivas do Pagamento"
+    },
+    {
+      "id": 20,
+      "pergunta": "Quem são as pessoas autorizadas a receber pagamento pelo credor?",
+      "resposta": "Podem receber pagamento: o representante legal (pais, tutores, curadores), o mandatário com poderes expressos, o terceiro indicado pelo credor (CC, art. 308), o credor putativo (art. 309), e o terceiro que, após o pagamento, transmita a propriedade ao credor (art. 311). O pagamento a pessoa não autorizada só vale se ratificado.",
+      "tema": "Condições Subjetivas do Pagamento"
+    },
+    {
+      "id": 21,
+      "pergunta": "O que diz o CC, art. 311 sobre pagamento a terceiro que transmite a propriedade ao credor?",
+      "resposta": "O art. 311 dispõe que o pagamento feito a terceiro é válido se este, após receber o valor, transmite a propriedade ao credor. Isso ocorre comumente quando o credor autoriza que o pagamento seja feito a um terceiro para que este lhe entregue um bem. A transmissão da propriedade ao credor sana o vício de pagamento a pessoa diversa.",
+      "tema": "Condições Subjetivas do Pagamento"
+    },
+    {
+      "id": 22,
+      "pergunta": "O pagamento feito a credor aparente (putativo) exige boa-fé do devedor?",
+      "resposta": "Sim. O CC, art. 309 exige boa-fé do devedor para que o pagamento a credor putativo seja válido. A boa-fé consiste na convicção objetiva e justificada de que a pessoa que recebe é o verdadeiro credor. Se o devedor tinha dúvidas ou conhecia a verdade, o pagamento não o libera.",
+      "tema": "Condições Subjetivas do Pagamento"
+    },
+    {
+      "id": 23,
+      "pergunta": "O devedor pode opor-se ao pagamento por terceiro não interessado?",
+      "resposta": "Sim. O devedor pode opor-se ao pagamento por terceiro não interessado (CC, art. 304, parágrafo único). Se houver oposição, o terceiro só pode pagar se o credor o autorizar. Pagando contra a vontade do devedor, o terceiro não tem ação de regresso.",
+      "tema": "Condições Subjetivas do Pagamento"
+    },
+    {
+      "id": 24,
+      "pergunta": "O fiador é terceiro interessado ou não interessado?",
+      "resposta": "O fiador é terceiro interessado, pois possui vínculo jurídico direto com a obrigação (CC, art. 346, III). Ele pode pagar a dívida e sub-rogar-se automaticamente nos direitos do credor, podendo cobrar do devedor principal o valor pago com juros e correção.",
+      "tema": "Condições Subjetivas do Pagamento"
+    },
+    {
+      "id": 25,
+      "pergunta": "O pagamento pode ser feito a credor que teve sua capacidade civil restrita supervenientemente?",
+      "resposta": "Sim, mas com cautela. Se o credor era capaz no momento da constituição da obrigação e tornou-se incapaz supervenientemente, o pagamento deve ser feito ao seu representante legal (CC, art. 310). Se pago diretamente ao incapaz, o devedor só se libera provando que o valor foi revertido em benefício dele.",
+      "tema": "Condições Subjetivas do Pagamento"
+    },
+    {
+      "id": 26,
+      "pergunta": "O devedor pode pagar antes do vencimento se o credor for incapaz?",
+      "resposta": "Sim, pode, mas o pagamento antecipado ao credor incapaz exige que seja feito ao representante legal. Se pago diretamente ao incapaz, o devedor assume o risco de ter de pagar novamente, salvo se provar que o valor beneficiou o incapaz (CC, art. 310).",
+      "tema": "Condições Subjetivas do Pagamento"
+    },
+    {
+      "id": 27,
+      "pergunta": "Qual é o objeto do pagamento?",
+      "resposta": "O objeto do pagamento é a prestação devida, que pode ser de dar (coisa certa ou incerta), de fazer ou de não fazer. O devedor deve cumprir exatamente a prestação contratada, não podendo o credor ser obrigado a receber prestação diversa, ainda que mais valiosa (CC, art. 313). O objeto deve ser lícito, possível e determinado ou determinável.",
+      "tema": "Condições Objetivas do Pagamento"
+    },
+    {
+      "id": 28,
+      "pergunta": "O que é prova do pagamento?",
+      "resposta": "A prova do pagamento é o meio pelo qual o devedor demonstra que cumpriu a obrigação. A principal prova é a quitação (CC, art. 319), mas também podem ser usados: recibos, extratos bancários, testemunhas (em obrigações de pequeno valor ou quando há princípio de prova escrita), e presunções legais. O ônus da prova do pagamento é do devedor (CC, art. 323).",
+      "tema": "Condições Objetivas do Pagamento"
+    },
+    {
+      "id": 29,
+      "pergunta": "Em quais hipóteses o credor é obrigado a receber prestação diversa da contratada?",
+      "resposta": "Em regra, o credor não é obrigado (CC, art. 313). As exceções são: (a) dação em pagamento, quando o credor consente em receber coisa diversa (art. 356); (b) consignação judicial, se o credor recusar receber; (c) nas obrigações alternativas, quando a escolha é do devedor; (d) em caso de mora accipiendi (mora do credor em receber).",
+      "tema": "Condições Objetivas do Pagamento"
+    },
+    {
+      "id": 30,
+      "pergunta": "O que são obrigações divisíveis e indivisíveis para fins de pagamento?",
+      "resposta": "Obrigação divisível é aquela que pode ser cumprida em parcelas sem perda de seu valor econômico ou substancial (ex.: pagamento de quantia em dinheiro). Obrigação indivisível é aquela cuja prestação não pode ser fracionada sem prejuízo (ex.: entrega de um cavalo de raça). A distinção é relevante para o direito de exigir pagamento parcial (CC, art. 314).",
+      "tema": "Condições Objetivas do Pagamento"
+    },
+    {
+      "id": 31,
+      "pergunta": "Como se paga obrigação em dinheiro no Direito Civil brasileiro?",
+      "resposta": "A obrigação em dinheiro deve ser paga em moeda corrente nacional (Real), pelo valor nominal, salvo disposição contratual em contrário (CC, art. 315). O pagamento em moeda estrangeira é vedado como meio de pagamento, mas pode ser estipulado para fins de indexação, desde que convertido em moeda nacional no momento do pagamento (Decreto-Lei 857/69 e Lei 10.192/01).",
+      "tema": "Condições Objetivas do Pagamento"
+    },
+    {
+      "id": 32,
+      "pergunta": "O que é a teoria da imprevisão no pagamento das obrigações?",
+      "resposta": "A teoria da imprevisão (CC, art. 478) permite a revisão ou resolução do contrato quando eventos imprevisíveis e extraordinários tornam a prestação excessivamente onerosa para uma das partes, com extrema vantagem para a outra. Requer: imprevisibilidade, extraordinariedade, onerosidade excessiva e vantagem extrema.",
+      "tema": "Condições Objetivas do Pagamento"
+    },
+    {
+      "id": 33,
+      "pergunta": "A moeda estrangeira pode ser utilizada como meio de pagamento no Brasil?",
+      "resposta": "Em regra, não. A moeda estrangeira não é meio de pagamento legal no Brasil (Decreto-Lei 857/69). Contudo, pode ser estipulada para indexação ou referência de valor, desde que o pagamento seja convertido em moeda nacional no momento do cumprimento (CC, art. 315, parágrafo único). Exceções legais existem para contratos internacionais e câmbio.",
+      "tema": "Condições Objetivas do Pagamento"
+    },
+    {
+      "id": 34,
+      "pergunta": "O que é quitação e quais seus requisitos?",
+      "resposta": "Quitação é o documento pelo qual o credor declara ter recebido o pagamento, extinguindo a obrigação. Seus requisitos (CC, art. 320) são: valor da prestação, nome do devedor, tempo e lugar do pagamento, assinatura do credor ou equivalente. A quitação sem esses requisitos é válida se provado o pagamento por outros meios.",
+      "tema": "Condições Objetivas do Pagamento"
+    },
+    {
+      "id": 35,
+      "pergunta": "O que são quotas periódicas e como se aplicam ao pagamento?",
+      "resposta": "Quotas periódicas são prestações que se repetem no tempo, como aluguel, pensão alimentícia e prestações de financiamento. O pagamento de cada quota é autônomo, mas todas integram a mesma obrigação continuativa. A mora no pagamento de uma quota não implica vencimento antecipado das demais, salvo cláusula contratual expressa (CC, art. 333).",
+      "tema": "Condições Objetivas do Pagamento"
+    },
+    {
+      "id": 36,
+      "pergunta": "O que é devolução do título e qual sua importância no pagamento?",
+      "resposta": "Devolução do título é a entrega do documento representativo do crédito ao devedor após o pagamento. A posse do título pelo devedor faz presumir o pagamento (CC, art. 324). Se o credor recusar devolver o título, o devedor pode consignar o pagamento. A devolução evita que o credor cobre novamente a mesma dívida usando o título.",
+      "tema": "Condições Objetivas do Pagamento"
+    },
+    {
+      "id": 37,
+      "pergunta": "O pagamento sem reserva de direitos feito ao credor incapaz extingue a obrigação?",
+      "resposta": "Não extingue a obrigação de pleno direito. O CC, art. 310 condiciona a validade do pagamento ao incapaz à comprovação de que reverteu em benefício dele. Se o devedor não provar o benefício, pode ser obrigado a pagar novamente ao representante legal.",
+      "tema": "Condições Objetivas do Pagamento"
+    },
+    {
+      "id": 38,
+      "pergunta": "O credor pode recusar pagamento parcial em obrigação divisível?",
+      "resposta": "Em regra, não. Nas obrigações divisíveis, o credor é obrigado a receber pagamento parcial (CC, art. 314). Contudo, essa regra comporta exceções: se houver ajuste contratual em contrário, se o pagamento parcial prejudicar o credor, ou se a obrigação for indivisível por natureza ou convenção.",
+      "tema": "Condições Objetivas do Pagamento"
+    },
+    {
+      "id": 39,
+      "pergunta": "O que é pagamento por consignação extrajudicial?",
+      "resposta": "Consignação extrajudicial é o depósito administrativo do valor devido em estabelecimento bancário oficial, sem necessidade de ação judicial (Lei 8.951/94 e CC, art. 334, parágrafo 2º). É cabível quando o credor recusa receber, é desconhecido ou está ausente. O devedor deposita o valor em conta vinculada e comunica o credor.",
+      "tema": "Condições Objetivas do Pagamento"
+    },
+    {
+      "id": 40,
+      "pergunta": "Quais são os requisitos da consignação em pagamento?",
+      "resposta": "Os requisitos estão no CC, art. 335: (a) recusa do credor em receber ou dar quitação; (b) credor ausente, incapaz ou desconhecido; (c) credor que não dá quitação na forma devida. O devedor deposita a coisa devida em juízo ou em banco oficial. A consignação extingue a obrigação com eficácia liberatória imediata.",
+      "tema": "Condições Objetivas do Pagamento"
+    },
+    {
+      "id": 41,
+      "pergunta": "O que é pagamento em consignação judicial?",
+      "resposta": "Consignação judicial é o depósito em juízo da coisa devida pelo devedor quando o credor recusa receber, está ausente, é desconhecido, incapaz ou não dá quitação (CC, arts. 334-345). O devedor deposita o valor e cita o credor para recebê-lo ou contestar. Procedente a consignação, a obrigação extingue-se com eficácia liberatória retroativa à data do depósito.",
+      "tema": "Condições Objetivas do Pagamento"
+    },
+    {
+      "id": 42,
+      "pergunta": "O devedor pode imputar o pagamento em qualquer dívida?",
+      "resposta": "Sim. O devedor pode imputar o pagamento em qualquer das dívidas que tiver com o mesmo credor, inclusive na não vencida, desde que declare no momento do pagamento (CC, art. 352). Essa faculdade é expressa e prevalece sobre as demais regras de imputação. Se o devedor não fizer a imputação, o credor pode fazê-lo na quitação.",
+      "tema": "Condições Objetivas do Pagamento"
+    },
+    {
+      "id": 43,
+      "pergunta": "Na imputação do pagamento, se houver dívidas líquidas e ilíquidas, qual se paga primeiro?",
+      "resposta": "Se o devedor não fizer a imputação e o credor também não a fizer na quitação, aplicam-se as regras legais do CC, art. 355: primeiro imputa-se nas dívidas líquidas vencidas, depois nas líquidas não vencidas. Se todas forem líquidas e vencidas, preferem-se as mais onerosas (juros mais altos, garantias mais gravosas).",
+      "tema": "Condições Objetivas do Pagamento"
+    },
+    {
+      "id": 44,
+      "pergunta": "O que são juros de mora no pagamento?",
+      "resposta": "Juros de mora são os acréscimos devidos pelo atraso no pagamento, calculados sobre o valor da dívida (CC, art. 406). São devidos desde a citação inicial ou desde o vencimento se previstos em contrato (art. 405). A taxa é a SELIC ou, na sua falta, 1% ao mês, salvo disposição contratual diversa.",
+      "tema": "Condições Objetivas do Pagamento"
+    },
+    {
+      "id": 45,
+      "pergunta": "O que é lugar do pagamento?",
+      "resposta": "Lugar do pagamento é o local onde a prestação deve ser cumprida. Divide-se em: (a) obrigação quesível: paga-se no domicílio do devedor, que deve procurar o credor para pagar; (b) obrigação portável: paga-se no domicílio do credor, que deve procurar o devedor para receber. Em caso de dúvida, presume-se quesível no domicílio do devedor (CC, art. 327).",
+      "tema": "Lugar do Pagamento"
+    },
+    {
+      "id": 46,
+      "pergunta": "Qual a diferença entre obrigação quesível e portável?",
+      "resposta": "Na obrigação quesível (portable), o pagamento deve ser feito no domicílio do devedor, cabendo ao credor procurá-lo para receber. Na obrigação portável (quérable), o pagamento deve ser feito no domicílio do credor, cabendo ao devedor procurá-lo para pagar. O CC, art. 327 presume a obrigação como quesível no domicílio do devedor.",
+      "tema": "Lugar do Pagamento"
+    },
+    {
+      "id": 47,
+      "pergunta": "O contrato pode alterar o lugar do pagamento?",
+      "resposta": "Sim. As partes podem livremente convencionar o lugar do pagamento, seja no domicílio do credor, do devedor ou em local diverso (CC, art. 327). A autonomia privada prevalece na fixação do local. Se o contrato for silente, aplica-se a regra supletiva do art. 327 (domicílio do devedor).",
+      "tema": "Lugar do Pagamento"
+    },
+    {
+      "id": 48,
+      "pergunta": "Quais as exceções à regra geral do lugar do pagamento?",
+      "resposta": "As exceções incluem: (a) quando o contrato dispõe de outro local (CC, art. 327); (b) obrigações de entrega de coisa certa, paga-se onde a coisa estava no momento da obrigação (art. 328); (c) obrigações de fazer, realizam-se no local ajustado ou, na falta, no domicílio do devedor; (d) quando o credor muda de domicílio e causa prejuízo ao devedor (art. 329).",
+      "tema": "Lugar do Pagamento"
+    },
+    {
+      "id": 49,
+      "pergunta": "Se o credor muda de domicílio, o lugar do pagamento se altera?",
+      "resposta": "O credor pode mudar de domicílio, mas não pode agravar a situação do devedor. Se a mudança tornar o pagamento mais difícil ou oneroso, o devedor pode recusar pagar no novo domicílio e exigir que o credor o receba no local anterior (CC, art. 329). Aplica-se o princípio da boa-fé objetiva para não prejudicar o devedor.",
+      "tema": "Lugar do Pagamento"
+    },
+    {
+      "id": 50,
+      "pergunta": "O que ocorre se o pagamento for feito em local diverso do convencionado?",
+      "resposta": "O pagamento em local diverso do convencionado não libera o devedor, salvo se o credor o aceitar expressa ou tacitamente. O devedor que pagar em local errado assume os riscos, podendo ser considerado inadimplente. A quitação só será válida se o credor ratificar o pagamento ou se ficar provado que o valor chegou ao credor.",
+      "tema": "Lugar do Pagamento"
+    },
+    {
+      "id": 51,
+      "pergunta": "O que é vencimento da obrigação?",
+      "resposta": "Vencimento é o momento a partir do qual a obrigação se torna exigível, podendo o credor cobrar o devedor (CC, arts. 331-333). Pode ser: (a) ordinário, quando chega o termo final ajustado; (b) antecipado, nas hipóteses legais (art. 333), como insolvência do devedor, falência ou garantias inadimplidas. Antes do vencimento, a dívida é inexigível.",
+      "tema": "Tempo do Pagamento"
+    },
+    {
+      "id": 52,
+      "pergunta": "O que é prazo para pagamento e como se conta?",
+      "resposta": "Prazo para pagamento é o período estipulado para o cumprimento da obrigação. Pode ser expresso ou implícito. O CC, art. 331 dispõe que, não havendo prazo ajustado, o credor pode exigir a dívida imediatamente, salvo se a natureza da prestação ou a lei dispuserem de outro modo. O prazo em meses ou anos conta-se pelo calendário (arts. 132 e 133 do CC).",
+      "tema": "Tempo do Pagamento"
+    },
+    {
+      "id": 53,
+      "pergunta": "O credor pode cobrar a dívida antes do vencimento?",
+      "resposta": "Em regra, não. O devedor não é obrigado a pagar antes do vencimento, e o credor não pode exigir pagamento antecipado (CC, art. 331, parágrafo único). A exceção é o vencimento antecipado nas hipóteses do art. 333: insolvência do devedor, falência, garantias insuficientes, ou alienação de bens em fraude.",
+      "tema": "Tempo do Pagamento"
+    },
+    {
+      "id": 54,
+      "pergunta": "O devedor solvente pode pagar antes do vencimento?",
+      "resposta": "Sim. O devedor pode pagar antes do vencimento, renunciando ao prazo em seu favor (CC, art. 331, parágrafo único). O credor não pode recusar o pagamento antecipado, salvo se o prazo tiver sido estabelecido exclusivamente em benefício do credor. Em dúvida, presume-se o prazo em favor do devedor.",
+      "tema": "Tempo do Pagamento"
+    },
+    {
+      "id": 55,
+      "pergunta": "Qual a relação entre obrigação condicional e o tempo do pagamento?",
+      "resposta": "Nas obrigações condicionais (CC, arts. 121-126), a exigibilidade do pagamento depende do implemento da condição suspensiva. Enquanto a condição não se realizar, o credor não pode exigir o pagamento. Na condição resolutiva, a obrigação é exigível imediatamente, mas a eficácia do pagamento pode ser desfeita se a condição se implementar (art. 127).",
+      "tema": "Tempo do Pagamento"
+    },
+    {
+      "id": 56,
+      "pergunta": "O que é vencimento antecipado da dívida?",
+      "resposta": "Vencimento antecipado é a possibilidade legal de o credor exigir o pagamento antes do termo final, nas hipóteses do CC, art. 333: (I) insolvência do devedor (não falência); (II) falência ou recuperação judicial do devedor; (III) alienação ou oneração de bens sem garantia suficiente. Protege o credor contra o risco de inadimplemento futuro.",
+      "tema": "Tempo do Pagamento"
+    },
+    {
+      "id": 57,
+      "pergunta": "O que é pagamento por consignação extrajudicial?",
+      "resposta": "Consignação extrajudicial é o depósito administrativo do valor devido em estabelecimento bancário oficial, sem necessidade de ação judicial (Lei 8.951/94 e CC, art. 334, parágrafo 2º). É cabível quando o credor recusa receber, é desconhecido ou está ausente. O devedor deposita o valor em conta vinculada, comunica o credor e, se não houver oposição, a consignação é eficaz.",
+      "tema": "Formas Especiais de Pagamento"
+    },
+    {
+      "id": 58,
+      "pergunta": "Quais são os requisitos da consignação em pagamento?",
+      "resposta": "Os requisitos estão no CC, art. 335: (a) recusa do credor em receber ou dar quitação; (b) credor ausente, incapaz ou desconhecido; (c) credor que não dá quitação na forma devida. O devedor deve depositar a coisa devida (dinheiro ou bem) em juízo ou em banco oficial. A consignação extingue a obrigação com eficácia liberatória imediata.",
+      "tema": "Formas Especiais de Pagamento"
+    },
+    {
+      "id": 59,
+      "pergunta": "O que é sub-rogação pessoal no pagamento?",
+      "resposta": "Sub-rogação pessoal ocorre quando terceiro paga a dívida e assume os direitos do credor, com todas as garantias e privilégios (CC, arts. 346-351). Pode ser legal (art. 346) ou convencional (art. 347). O sub-rogado pode cobrar do devedor o valor pago, com juros e correção, nos mesmos prazos e condições do crédito originário.",
+      "tema": "Formas Especiais de Pagamento"
+    },
+    {
+      "id": 60,
+      "pergunta": "Quais são as hipóteses de sub-rogação legal?",
+      "resposta": "O CC, art. 346 prevê três hipóteses: (I) do credor que paga a dívida do devedor comum (em credores solidários); (II) do terceiro interessado que paga a dívida pela qual era responsável (fiador, avalista); (III) do terceiro que paga a dívida com anuência do devedor. Em todos os casos, o pagador se sub-roga nos direitos, garantias e privilégios do credor originário.",
+      "tema": "Formas Especiais de Pagamento"
+    },
+    {
+      "id": 61,
+      "pergunta": "O que é sub-rogação convencional?",
+      "resposta": "Sub-rogação convencional é aquela decorrente de acordo de vontades, em que as partes ajustam que terceiro que paga a dívida se sub-roga nos direitos do credor (CC, art. 347, I e II). Pode ocorrer: (a) quando o devedor toma emprestado de terceiro para pagar ao credor e estipula a sub-rogação; (b) quando terceiro empresta ao devedor para pagamento com sub-rogação ajustada.",
+      "tema": "Formas Especiais de Pagamento"
+    },
+    {
+      "id": 62,
+      "pergunta": "O que é imputação do pagamento?",
+      "resposta": "Imputação do pagamento é a determinação de qual dívida será quitada quando o devedor deve múltiplas obrigações da mesma natureza ao mesmo credor e paga quantia insuficiente para todas (CC, arts. 352-355). A imputação é feita: (a) pelo devedor no momento do pagamento; (b) na omissão, pelo credor na quitação; (c) na falta de ambos, pelas regras legais.",
+      "tema": "Formas Especiais de Pagamento"
+    },
+    {
+      "id": 63,
+      "pergunta": "O devedor pode imputar o pagamento em dívida não vencida?",
+      "resposta": "Sim. O devedor pode imputar o pagamento em qualquer das dívidas, inclusive na não vencida, desde que declare no momento do pagamento (CC, art. 352). Essa faculdade é expressa e prevalece sobre as demais regras de imputação. Se o devedor não fizer a imputação, o credor pode fazê-lo na quitação, respeitadas as regras dos arts. 353 e 354.",
+      "tema": "Formas Especiais de Pagamento"
+    },
+    {
+      "id": 64,
+      "pergunta": "O que é dação em pagamento?",
+      "resposta": "Dação em pagamento é o acordo pelo qual o credor consente em receber prestação diversa da contratada, extinguindo a obrigação (CC, art. 356). Exige: (a) consentimento do credor; (b) entrega de coisa diversa; (c) ânimo de extinguir a obrigação. Se a coisa dada for evicta, a obrigação original se restaura (art. 359), pois a dação equipara-se à venda.",
+      "tema": "Formas Especiais de Pagamento"
+    },
+    {
+      "id": 65,
+      "pergunta": "Qual a diferença entre dação em pagamento e novação?",
+      "resposta": "Na dação em pagamento, há alteração do objeto da prestação (coisa diversa), mantendo-se a mesma relação obrigacional (CC, art. 356). Na novação, cria-se nova obrigação para extinguir a anterior, com alteração subjetiva (credor ou devedor) ou objetiva (nova prestação), exigindo ânimo de novar (CC, art. 360). Na dação há entrega imediata; na novação, promessa futura.",
+      "tema": "Formas Especiais de Pagamento"
+    },
+    {
+      "id": 66,
+      "pergunta": "Qual a diferença entre novação subjetiva e objetiva?",
+      "resposta": "A novação subjetiva é a substituição do devedor (novação subjetiva passiva - CC, art. 360, II) ou do credor (novação subjetiva ativa - art. 360, III). A novação objetiva é a alteração da dívida anterior por outra nova, mudando o objeto ou a causa da obrigação (art. 360, I). Todas exigem dívida anterior, nova dívida válida e ânimo de novar (animus novandi).",
+      "tema": "Formas Especiais de Pagamento"
+    },
+    {
+      "id": 67,
+      "pergunta": "A novação dispensa o consentimento do devedor originário?",
+      "resposta": "Depende. Na novação subjetiva passiva por substituição do devedor (expromissão), dispensa-se a anuência do devedor originário (CC, art. 362). O novo devedor assume a dívida e o devedor originário fica liberado. Já na novação subjetiva ativa (substituição do credor), exige-se o consentimento do devedor, pois a alteração pode prejudicá-lo.",
+      "tema": "Formas Especiais de Pagamento"
+    },
+    {
+      "id": 68,
+      "pergunta": "O que é compensação no Direito Civil?",
+      "resposta": "Compensação é a forma de extinção de obrigações em que duas pessoas são credoras e devedoras uma da outra, reciprocamente. Operando-se a compensação, as dívidas extinguem-se até o valor da menor (CC, art. 368). Exige dívidas líquidas, vencidas e de coisas fungíveis da mesma espécie e qualidade. Pode ser legal, convencional ou judicial.",
+      "tema": "Formas Especiais de Pagamento"
+    },
+    {
+      "id": 69,
+      "pergunta": "Quais os requisitos da compensação legal?",
+      "resposta": "Os requisitos estão no CC, art. 369: (a) reciprocidade das obrigações (ambos são credores e devedores); (b) liquidez (valor determinado); (c) exigibilidade (dívidas vencidas); (d) fungibilidade (coisas da mesma espécie e qualidade). Excepcionalmente, a compensação pode ser convencional (acordo entre as partes) ou judicial (determinada pelo juiz), dispensando alguns requisitos.",
+      "tema": "Formas Especiais de Pagamento"
+    },
+    {
+      "id": 70,
+      "pergunta": "O que é confusão no Direito das Obrigações?",
+      "resposta": "Confusão é a reunião, na mesma pessoa, das qualidades de credor e devedor de uma mesma obrigação, extinguindo-a (CC, art. 381). Ocorre em casos como: herança (credor herda do devedor), fusão de empresas (credora e devedora se unem), ou cessão de crédito ao devedor. A confusão pode ser total ou parcial e não prejudica direitos de terceiros (art. 382).",
+      "tema": "Formas Especiais de Pagamento"
+    },
+    {
+      "id": 71,
+      "pergunta": "A confusão extingue obrigação solidária?",
+      "resposta": "Sim, mas apenas em relação ao devedor ou credor em que ocorreu a confusão. Na solidariedade ativa, se o credor confunde-se com o devedor, extingue-se a obrigação quanto a ele, subsistindo para os demais codevedores (CC, art. 383). Na solidariedade passiva, a confusão entre um devedor e o credor extingue a dívida proporcionalmente à parte daquele.",
+      "tema": "Formas Especiais de Pagamento"
+    },
+    {
+      "id": 72,
+      "pergunta": "O que é remissão de dívida?",
+      "resposta": "Remissão é o ato gratuito pelo qual o credor voluntariamente renuncia ao crédito, extinguindo a obrigação sem receber o pagamento (CC, art. 385). Pode ser expressa (por contrato ou declaração escrita) ou tácita (devolução voluntária do título ao devedor, art. 386). Exige aceitação do devedor, ainda que tácita.",
+      "tema": "Formas Especiais de Pagamento"
+    },
+    {
+      "id": 73,
+      "pergunta": "O que é inadimplemento absoluto?",
+      "resposta": "Inadimplemento absoluto ocorre quando a prestação não é cumprida e tornou-se impossível ou inútil para o credor, não sendo mais possível o cumprimento tardio. Exemplo: contrato de show para data específica que não ocorreu. O credor pode exigir perdas e danos (CC, art. 389) e resolver o contrato (art. 475). O devedor responde independentemente de mora.",
+      "tema": "Inadimplemento das Obrigações"
+    },
+    {
+      "id": 74,
+      "pergunta": "Qual a diferença entre inadimplemento absoluto e relativo (mora)?",
+      "resposta": "No inadimplemento absoluto, a prestação tornou-se impossível ou inútil ao credor, não havendo mais utilidade no cumprimento tardio. Na mora (inadimplemento relativo), o devedor pode ainda cumprir a prestação, que permanece possível e útil (CC, art. 394). Exemplo: atraso no pagamento de aluguel (mora) vs. não entrega de fogos de artifício no réveillon (inadimplemento absoluto).",
+      "tema": "Inadimplemento das Obrigações"
+    },
+    {
+      "id": 75,
+      "pergunta": "O que é mora do devedor (mora solvendi)?",
+      "resposta": "Mora do devedor é o retardamento culposo no cumprimento da obrigação, que permanece possível e útil ao credor (CC, art. 394). Requer: (a) dívida líquida e vencida; (b) culpa do devedor; (c) ausência de pagamento no tempo, lugar e forma devidos. Efeitos: responsabilidade por perdas e danos, juros de mora, correção monetária e cláusula penal (arts. 395-397).",
+      "tema": "Inadimplemento das Obrigações"
+    },
+    {
+      "id": 76,
+      "pergunta": "O que é mora do credor (mora accipiendi)?",
+      "resposta": "Mora do credor ocorre quando ele recusa injustificadamente receber o pagamento ou não fornece os meios necessários para o adimplemento (CC, art. 400). Efeitos: o devedor não responde por deterioração ou perda da coisa (salvo dolo), pode consignar o pagamento, e os juros de mora deixam de correr.",
+      "tema": "Inadimplemento das Obrigações"
+    },
+    {
+      "id": 77,
+      "pergunta": "O que são perdas e danos no inadimplemento?",
+      "resposta": "Perdas e danos são a indenização devida pelo devedor inadimplente, abrangendo danos emergentes (efetiva perda patrimonial) e lucros cessantes (o que razoavelmente se deixou de lucrar), nos termos do CC, art. 402. Também incluem juros de mora (art. 406) e correção monetária. A indenização mede-se pela diferença entre o patrimônio atual e o que seria se a obrigação fosse cumprida.",
+      "tema": "Inadimplemento das Obrigações"
+    },
+    {
+      "id": 78,
+      "pergunta": "O que é cláusula penal?",
+      "resposta": "Cláusula penal é a estipulação contratual acessória pela qual as partes fixam previamente o valor das perdas e danos em caso de inadimplemento (CC, arts. 408-416). Pode ser: (a) compensatória (substitui a indenização, não podendo o credor exigir a prestação e a multa); (b) moratória (penaliza o atraso, permitindo cumular prestação e multa). Não pode ser abusiva (art. 412).",
+      "tema": "Inadimplemento das Obrigações"
+    },
+    {
+      "id": 79,
+      "pergunta": "Qual a diferença entre cláusula penal compensatória e moratória?",
+      "resposta": "A cláusula penal compensatória substitui a indenização pelo inadimplemento absoluto: o credor pode exigir a multa, mas não a prestação principal (CC, art. 410). A cláusula penal moratória é devida pelo atraso no cumprimento: o credor pode cumular a prestação principal com a multa (art. 411). Na dúvida, a cláusula penal presume-se compensatória (art. 409).",
+      "tema": "Inadimplemento das Obrigações"
+    },
+    {
+      "id": 80,
+      "pergunta": "O que são arras (sinal) e seus efeitos no inadimplemento?",
+      "resposta": "Arras ou sinal é a quantia ou coisa entregue por uma parte à outra como confirmação do contrato e princípio de pagamento (CC, arts. 417-420). Se quem deu as arras inadimplir, o credor pode reter as arras como indenização mínima. Se quem recebeu as arras inadimplir, o devedor pode exigir o dobro corrigido. Podem ser confirmatórias ou penitenciais.",
+      "tema": "Inadimplemento das Obrigações"
+    }
+  ]
+}

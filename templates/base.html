@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civil Flash - Direito das Obrigações</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">&#x2696;</span>
+                    <span class="logo-text">Civil Flash</span>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle" aria-label="Fechar sidebar">&times;</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="{{ url_for('index') }}" class="nav-item {% if request.endpoint == 'index' %}active{% endif %}">
+                    <span class="nav-icon">&#x1F3E0;</span>
+                    <span class="nav-label">Dashboard</span>
+                </a>
+                <a href="{{ url_for('resumos') }}" class="nav-item {% if request.endpoint == 'resumos' %}active{% endif %}">
+                    <span class="nav-icon">&#x1F4DA;</span>
+                    <span class="nav-label">Resumos</span>
+                </a>
+                <a href="{{ url_for('flashcards') }}" class="nav-item {% if request.endpoint == 'flashcards' %}active{% endif %}">
+                    <span class="nav-icon">&#x1F0CF;</span>
+                    <span class="nav-label">Flashcards</span>
+                </a>
+                <a href="{{ url_for('questoes') }}" class="nav-item {% if request.endpoint == 'questoes' %}active{% endif %}">
+                    <span class="nav-icon">&#x270D;</span>
+                    <span class="nav-label">Questões</span>
+                </a>
+                <a href="{{ url_for('simulado') }}" class="nav-item {% if request.endpoint == 'simulado' %}active{% endif %}">
+                    <span class="nav-icon">&#x23F1;</span>
+                    <span class="nav-label">Simulado</span>
+                </a>
+                <a href="{{ url_for('revisao_final') }}" class="nav-item {% if request.endpoint == 'revisao_final' %}active{% endif %}">
+                    <span class="nav-icon">&#x2B50;</span>
+                    <span class="nav-label">Revisão Final</span>
+                </a>
+                <a href="{{ url_for('professor') }}" class="nav-item {% if request.endpoint == 'professor' %}active{% endif %}">
+                    <span class="nav-icon">&#x1F393;</span>
+                    <span class="nav-label">Modo Professor</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <p>Civil Flash v1.0</p>
+                <p>Direito das Obrigações</p>
+            </div>
+        </aside>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menu">&#x2630;</button>
+        <main class="main-content" id="mainContent">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const toggle = document.getElementById('sidebarToggle');
+            const mobileBtn = document.getElementById('mobileMenuBtn');
+            const mainContent = document.getElementById('mainContent');
+
+            if (toggle) {
+                toggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('collapsed');
+                    mainContent.classList.toggle('expanded');
+                });
+            }
+
+            if (mobileBtn) {
+                mobileBtn.addEventListener('click', function() {
+                    sidebar.classList.toggle('mobile-open');
+                });
+            }
+
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    if (!sidebar.contains(e.target) && !mobileBtn.contains(e.target)) {
+                        sidebar.classList.remove('mobile-open');
+                    }
+                }
+            });
+        });
+    </script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>
