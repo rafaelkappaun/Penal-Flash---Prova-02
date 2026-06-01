@@ -48,20 +48,42 @@ function iniciarTimer() {
 
 function renderizarSimulado() {
     const container = document.getElementById('simuladoQuestoes');
+    const totalRespondidas = Object.keys(respostasSimulado).length;
+    const todasRespondidas = totalRespondidas === questoesSimulado.length;
 
     container.innerHTML = questoesSimulado.map((q, idx) => {
+        const respondido = respostasSimulado[idx];
+        const isCorrect = respondido !== undefined && (respondido === q.correta || respondido === q.correta);
+
         if (q.tipo === 'vf') {
+            const corretaVF = q.correta === true || q.correta === 'true' || q.correta === 'V';
+            let btnTrueClass = '';
+            let btnFalseClass = '';
+            if (respondido !== undefined) {
+                if (corretaVF) {
+                    btnTrueClass = ' correct';
+                    if (respondido === false || respondido === 'false' || respondido === false) btnFalseClass = ' wrong';
+                } else {
+                    btnFalseClass = ' correct';
+                    if (respondido === true || respondido === 'true' || respondido === true) btnTrueClass = ' wrong';
+                }
+            }
             return `
                 <div class="questao-item" id="sq-${idx}">
                     <div class="simulado-questao-numero">Questão ${idx + 1} de ${questoesSimulado.length}</div>
                     <div class="questao-texto">${q.pergunta}</div>
                     <div class="questao-vf">
-                        <button class="btn-vf true" onclick="responderSimuladoVF(${idx}, true, this)">V</button>
-                        <button class="btn-vf false" onclick="responderSimuladoVF(${idx}, false, this)">F</button>
+                        <button class="btn-vf true${btnTrueClass}" onclick="responderSimuladoVF(${idx}, true)" ${respondido !== undefined ? 'disabled' : ''}>V</button>
+                        <button class="btn-vf false${btnFalseClass}" onclick="responderSimuladoVF(${idx}, false)" ${respondido !== undefined ? 'disabled' : ''}>F</button>
+                    </div>
+                    <div class="questao-explicacao ${respondido !== undefined ? 'visible' : ''}">
+                        <strong>${respondido !== undefined ? (isCorrect ? '&#x2705; Correto!' : '&#x274C; Errado!') : 'Aguardando resposta...'}</strong><br>
+                        ${q.explicacao}
                     </div>
                 </div>
             `;
         }
+
         return `
             <div class="questao-item" id="sq-${idx}">
                 <div class="simulado-questao-numero">Questão ${idx + 1} de ${questoesSimulado.length}</div>
@@ -69,37 +91,62 @@ function renderizarSimulado() {
                 <div class="questao-alternativas">
                     ${q.alternativas.map((alt, i) => {
                         const letra = String.fromCharCode(65 + i);
+                        let extraClass = '';
+                        if (respondido !== undefined) {
+                            if (letra === q.correta) extraClass = ' correct';
+                            else if (letra === respondido) extraClass = ' wrong';
+                        }
                         return `
-                            <div class="questao-alternativa" onclick="responderSimuladoMC(${idx}, '${letra}', this)">
+                            <div class="questao-alternativa${extraClass}" onclick="responderSimuladoMC(${idx}, '${letra}')">
                                 <span class="questao-letra">${letra}</span>
                                 <span>${alt.replace(/^[A-E]\)\s*/, '')}</span>
                             </div>
                         `;
                     }).join('')}
                 </div>
+                <div class="questao-explicacao ${respondido !== undefined ? 'visible' : ''}">
+                    <strong>${respondido !== undefined ? (isCorrect ? '&#x2705; Correto!' : '&#x274C; Errado!') : 'Aguardando resposta...'}</strong><br>
+                    ${q.explicacao}
+                </div>
             </div>
         `;
     }).join('');
+
+    if (todasRespondidas) {
+        const btnGroup = document.querySelector('#simuladoContainer > div:last-child');
+        if (btnGroup) {
+            btnGroup.innerHTML = `
+                <button class="btn btn-gold" onclick="finalizarSimulado()">&#x1F4CA; Ver Relatório</button>
+            `;
+        }
+    }
+
+    atualizarContador();
 }
 
-function responderSimuladoMC(idx, letra, el) {
+function atualizarContador() {
+    const total = questoesSimulado.length;
+    const respondidas = Object.keys(respostasSimulado).length;
+    let el = document.getElementById('simuladoContador');
+    if (!el) {
+        el = document.createElement('div');
+        el.id = 'simuladoContador';
+        el.style.cssText = 'text-align:center;font-size:14px;color:var(--text-secondary);margin-bottom:16px;';
+        document.getElementById('simuladoQuestoes').before(el);
+    }
+    el.innerHTML = `Respondidas: ${respondidas} / ${total}`;
+}
+
+function responderSimuladoMC(idx, letra) {
     if (respostasSimulado[idx] !== undefined) return;
     respostasSimulado[idx] = letra;
-    const parent = document.getElementById(`sq-${idx}`);
-    parent.querySelectorAll('.questao-alternativa').forEach(a => a.style.borderColor = 'var(--border-glass)');
-    el.style.borderColor = 'var(--accent-blue)';
-    el.style.background = 'rgba(79, 110, 247, 0.1)';
+    renderizarSimulado();
 }
 
-function responderSimuladoVF(idx, valor, el) {
+function responderSimuladoVF(idx, valor) {
     if (respostasSimulado[idx] !== undefined) return;
     respostasSimulado[idx] = valor;
-    const parent = document.getElementById(`sq-${idx}`);
-    parent.querySelectorAll('.btn-vf').forEach(b => {
-        b.classList.remove('selected-true', 'selected-false');
-    });
-    if (valor === true) el.classList.add('selected-true');
-    else el.classList.add('selected-false');
+    renderizarSimulado();
 }
 
 function finalizarSimulado() {

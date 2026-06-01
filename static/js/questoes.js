@@ -42,9 +42,18 @@ function renderQuestoes(lista) {
         const isCorrect = respondido !== undefined && (respondido === q.correta || respondido === q.correta);
 
         if (q.tipo === 'vf') {
-            let selectedClass = '';
-            if (respondido === true) selectedClass = 'selected-true';
-            if (respondido === false) selectedClass = 'selected-false';
+            const corretaVF = q.correta === true || q.correta === 'true' || q.correta === 'V';
+            let btnTrueClass = '';
+            let btnFalseClass = '';
+            if (respondido !== undefined) {
+                if (corretaVF) {
+                    btnTrueClass = ' correct';
+                    if (respondido === false || respondido === 'false' || respondido === false) btnFalseClass = ' wrong';
+                } else {
+                    btnFalseClass = ' correct';
+                    if (respondido === true || respondido === 'true' || respondido === true) btnTrueClass = ' wrong';
+                }
+            }
             return `
                 <div class="questao-item" id="q-${q.id}">
                     <div class="questao-header">
@@ -53,11 +62,11 @@ function renderQuestoes(lista) {
                     </div>
                     <div class="questao-texto">${q.pergunta}</div>
                     <div class="questao-vf">
-                        <button class="btn-vf true ${respondido === true ? 'selected-true' : ''}" onclick="responderVF(${q.id}, true)">V</button>
-                        <button class="btn-vf false ${respondido === false ? 'selected-false' : ''}" onclick="responderVF(${q.id}, false)">F</button>
+                        <button class="btn-vf true${btnTrueClass}" onclick="responderVF(${q.id}, true)">V</button>
+                        <button class="btn-vf false${btnFalseClass}" onclick="responderVF(${q.id}, false)">F</button>
                     </div>
                     <div class="questao-explicacao ${respondido !== undefined ? 'visible' : ''}" id="expl-${q.id}">
-                        <strong>${isCorrect ? '&#x2705; Correto!' : '&#x274C; Errado!'}</strong><br>
+                        <strong>${respondido !== undefined ? (isCorrect ? '&#x2705; Correto!' : '&#x274C; Errado!') : 'Clique em V ou F para responder'}</strong><br>
                         ${q.explicacao}
                     </div>
                 </div>
@@ -88,7 +97,7 @@ function renderQuestoes(lista) {
                     }).join('')}
                 </div>
                 <div class="questao-explicacao ${respondido !== undefined ? 'visible' : ''}" id="expl-${q.id}">
-                    <strong>${isCorrect ? '&#x2705; Correto!' : '&#x274C; Errado!'}</strong><br>
+                    <strong>${respondido !== undefined ? (isCorrect ? '&#x2705; Correto!' : '&#x274C; Errado!') : 'Clique em uma alternativa para responder'}</strong><br>
                     ${q.explicacao}
                 </div>
             </div>
