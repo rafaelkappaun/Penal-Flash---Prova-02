@@ -56,16 +56,16 @@ function renderizarSimulado() {
         const isCorrect = respondido !== undefined && (respondido === q.correta || respondido === q.correta);
 
         if (q.tipo === 'vf') {
-            const corretaVF = q.correta === true || q.correta === 'true' || q.correta === 'V';
+            const corretaVF = q.correta === true;
             let btnTrueClass = '';
             let btnFalseClass = '';
             if (respondido !== undefined) {
                 if (corretaVF) {
                     btnTrueClass = ' correct';
-                    if (respondido === false || respondido === 'false' || respondido === false) btnFalseClass = ' wrong';
+                    if (respondido === false) btnFalseClass = ' wrong';
                 } else {
                     btnFalseClass = ' correct';
-                    if (respondido === true || respondido === 'true' || respondido === true) btnTrueClass = ' wrong';
+                    if (respondido === true) btnTrueClass = ' wrong';
                 }
             }
             return `
