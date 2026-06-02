@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Simulado de Direito Penal</title>
+    <style>
+        :root {
+            --primary: #1e293b;
+            --secondary: #0f766e;
+            --success: #16a34a;
+            --danger: #dc2626;
+            --background: #f8fafc;
+            --surface: #ffffff;
+            --text: #0f172a;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--background); color: var(--text); padding: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 30px; background: linear-gradient(135deg, #1e293b, #334155); color: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        .tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .tab-btn { flex: 1; min-width: 140px; padding: 12px; background: #e2e8f0; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; color: #475569; }
+        .tab-btn.active { background: var(--secondary); color: white; }
+        .panel { background: var(--surface); padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 20px; display: none; }
+        .panel.active { display: block; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .stat-card { background: #f1f5f9; padding: 20px; border-radius: 8px; text-align: center; border-left: 5px solid var(--secondary); }
+        .stat-card.correct { border-left-color: var(--success); }
+        .stat-card.wrong { border-left-color: var(--danger); }
+        .stat-number { font-size: 2rem; font-weight: bold; color: var(--primary); }
+        .question-box { margin-bottom: 20px; }
+        .badge { background: #ccfbf1; color: #115e59; padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: bold; display: inline-block; margin-bottom: 10px; margin-right: 5px; }
+        .options-list { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+        .option-btn { padding: 15px; border: 2px solid #e2e8f0; border-radius: 8px; background: white; text-align: left; cursor: pointer; font-size: 1rem; transition: 0.2s; color: var(--text); }
+        .option-btn:hover { background: #f1f5f9; border-color: #cbd5e1; }
+        .option-btn.correct-ans { background: #d1fae5; border-color: var(--success); color: #065f46; font-weight: bold; }
+        .option-btn.wrong-ans { background: #fee2e2; border-color: var(--danger); color: #991b1b; }
+        .explanation-box { margin-top: 20px; padding: 15px; background: #f0fdf4; border-left: 5px solid var(--success); border-radius: 4px; display: none; line-height: 1.6; }
+        .nav-actions { display: flex; justify-content: space-between; margin-top: 20px; }
+        .btn { padding: 12px 24px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; color: white; background: var(--primary); }
+        .btn:disabled { background: #cbd5e1; cursor: not-allowed; }
+        .flashcard-container { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        .flashcard { width: 100%; max-width: 600px; height: 320px; perspective: 1000px; cursor: pointer; }
+        .flashcard-inner { width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; position: relative; }
+        .flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
+        .card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); font-size: 1.15rem; font-weight: 500; line-height: 1.5; }
+        .card-front { background: linear-gradient(135deg, #0f766e, #115e59); color: white; }
+        .card-back { background: #ffffff; color: var(--text); transform: rotateY(180deg); border: 3px solid var(--secondary); overflow-y: auto; }
+        @media (max-width: 600px) { .tab-btn { min-width: 100%; } }
+        #q-selector { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; justify-content: center; }
+        #q-selector button { width: 40px; height: 40px; border: 2px solid #e2e8f0; border-radius: 6px; background: white; cursor: pointer; font-weight: bold; transition: 0.2s; }
+        #q-selector button.active-q { background: var(--secondary); color: white; border-color: var(--secondary); }
+        #q-selector button.answered { background: #d1fae5; border-color: var(--success); }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Super Simulado de Direito Penal</h1>
+        <p>Revisão para Prova 02 – 60 Questões</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('quiz')">Simulado (60 Questões)</button>
+        <button class="tab-btn" onclick="switchTab('flashcards')">Flashcards</button>
+        <button class="tab-btn" onclick="switchTab('stats')">Desempenho</button>
+    </div>
+
+    <div id="quiz" class="panel active">
+        <div id="quiz-container">
+            <div id="q-selector"></div>
+            <div class="question-box">
+                <span id="q-badge" class="badge">Questão 1 de 60</span>
+                <span id="q-topic" class="badge" style="background:#0f766e; color:white;">Tema</span>
+                <h3 id="question-text" style="margin-top:10px; line-height:1.5;">Carregando...</h3>
+                <div class="options-list" id="options-container"></div>
+            </div>
+            <div id="explanation" class="explanation-box">
+                <strong>Gabarito Comentado:</strong>
+                <p id="explanation-text" style="margin-top:5px;"></p>
+            </div>
+            <div class="nav-actions">
+                <button class="btn" id="prev-btn" onclick="changeQuestion(-1)">Anterior</button>
+                <span id="q-counter" style="font-weight:bold;color:var(--primary);">1 / 60</span>
+                <button class="btn" id="next-btn" onclick="changeQuestion(1)">Próxima</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="flashcards" class="panel">
+        <div class="flashcard-container">
+            <p style="text-align:center; color:#64748b;">Clique no cartão para ver a resposta.</p>
+            <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                <div class="flashcard-inner">
+                    <div class="card-front">
+                        <span class="badge" style="background:rgba(255,255,255,0.2); color:white; margin-bottom:15px;" id="fc-number">Card 1</span>
+                        <p id="fc-front">Pergunta</p>
+                    </div>
+                    <div class="card-back">
+                        <strong>Resposta:</strong>
+                        <p id="fc-back" style="margin-top:10px; text-align:left; font-size:1rem;"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-actions" style="width:100%; max-width:600px;">
+                <button class="btn" onclick="changeFlashcard(-1)">Anterior</button>
+                <button class="btn" onclick="changeFlashcard(1)">Próximo</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="stats" class="panel">
+        <h2>Desempenho</h2>
+        <p style="margin-bottom: 20px; color:#64748b;">Estatísticas das suas respostas.</p>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="st-total">0</div>
+                <div>Respondidas</div>
+            </div>
+            <div class="stat-card correct">
+                <div class="stat-number" id="st-correct" style="color:var(--success)">0</div>
+                <div>Acertos</div>
+            </div>
+            <div class="stat-card wrong">
+                <div class="stat-number" id="st-wrong" style="color:var(--danger)">0</div>
+                <div>Erros</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="st-pct">0%</div>
+                <div>Aproveitamento</div>
+            </div>
+        </div>
+        <button class="btn" onclick="resetStats()" style="background:var(--danger)">Resetar Estatísticas</button>
+    </div>
+</div>
+
+<script>
+    const questions = [
+        {
+            topic: "Furto Simples",
+            question: "João subtrai um celular do bolso de Pedro enquanto este distraído olha uma vitrine, sem que Pedro perceba a ação. Minutos depois, João é abordado pela polícia e preso com o aparelho. Considerando os arts. 155 e 157 do CP, a conduta de João configura:",
+            options: ["Roubo, pois houve subtração de coisa alheia móvel.", "Furto, pois não houve violência ou grave ameaça contra a pessoa.", "Estelionato, pois houve aproveitamento de distração da vítima.", "Apropriação indébita, pois o bem foi recebido de forma legítima."],
+            answer: 1,
+            explanation: "O furto (Art. 155) consiste na subtração de coisa alheia móvel sem o uso de violência ou grave ameaça contra a pessoa. Já o roubo (Art. 157) exige violência ou grave ameaça como meio de execução. Como João agiu sem violência, o crime é de furto."
+        },
+        {
+            topic: "Furto Privilegiado",
+            question: "Maria, primária e sem antecedentes, subtrai um frasco de perfume avaliado em R$ 80,00 de uma loja de departamentos. O juiz, ao sentenciar, verifica que o valor é inferior a 1 salário mínimo. Diante do Art. 155, §2º do CP, o juiz poderá:",
+            options: ["Aplicar a pena de reclusão normalmente, sem qualquer benefício.", "Reconhecer o furto privilegiado, podendo reduzir a pena de 1/3 a 2/3, substituir a reclusão por detenção ou aplicar apenas multa.", "Absolver Maria pelo princípio da insignificância obrigatório.", "Reconhecer o furto de uso e extinguir a punibilidade."],
+            answer: 1,
+            explanation: "O furto privilegiado (Art. 155, §2º) exige primariedade do agente e pequeno valor da coisa (até 1 salário mínimo). O juiz tem discricionariedade para reduzir a pena de 1/3 a 2/3, substituir a reclusão por detenção, ou aplicar apenas multa."
+        },
+        {
+            topic: "Consumação do Roubo",
+            question: "Carlos rende uma vítima com uma faca e toma sua bolsa. Corre por duas quadras, mas é preso em flagrante pela polícia ainda com a bolsa. A defesa alega tentativa por não ter havido posse mansa e pacífica. Nos termos da Súmula 582 do STJ:",
+            options: ["O roubo consuma-se com a inversão da posse, sendo dispensável a posse mansa e pacífica.", "O roubo é mera tentativa se houve perseguição policial imediata.", "O roubo consuma-se apenas com a venda do bem subtraído.", "O roubo exige que a vítima perca totalmente a capacidade de reação."],
+            answer: 0,
+            explanation: "Súmula 582 do STJ: Consuma-se o crime de roubo com a inversão da posse do bem mediante violência ou grave ameaça, ainda que por breve tempo e seguida de perseguição imediata. A posse mansa e pacífica é dispensável."
+        },
+        {
+            topic: "Extorsão Mediante Sequestro",
+            question: "Bruno sequestra uma empresária e exige R$ 300.000,00 para libertá-la. A polícia localiza o cativeiro e liberta a vítima após 48 horas, antes do pagamento. Considerando o Art. 159 do CP:",
+            options: ["O crime não se consumou por falta de recebimento do resgate.", "O crime consumou-se, pois a extorsão mediante sequestro é crime formal e permanente, consumando-se com a privação da liberdade.", "Houve desclassificação para sequestro simples do Art. 148.", "O crime é tentado por ausência de exaurimento."],
+            answer: 1,
+            explanation: "A extorsão mediante sequestro (Art. 159) é crime formal e permanente. Consuma-se no momento em que a liberdade da vítima é cerceada, independentemente do recebimento do resgate. Pena base: reclusão de 8 a 15 anos."
+        },
+        {
+            topic: "Consumação da Extorsão",
+            question: "Sobre o crime de extorsão mediante sequestro, assinale a alternativa correta quanto ao seu momento consumativo:",
+            options: ["Crime material: consuma-se apenas com o efetivo recebimento da vantagem indevida.", "Crime formal e permanente: consuma-se com a privação da liberdade da vítima visando ao resgate.", "Crime de mera conduta: consuma-se com a simples exigência do resgate.", "Crime habitual: exige a reiteração da conduta criminosa."],
+            answer: 1,
+            explanation: "A extorsão mediante sequestro é crime formal (não exige o resultado naturalístico do recebimento do resgate) e permanente (a consumação se protrai no tempo enquanto durar a privação da liberdade)."
+        },
+        {
+            topic: "Estupro",
+            question: "Roberto, mediante emprego de arma de fogo, constrange Laura a com ele praticar ato libidinoso diverso da conjunção carnal. Considerando o Art. 213 do CP, analise: I - Ação nuclear é 'constranger alguém' à conjunção carnal ou ato libidinoso. II - Meios são violência ou grave ameaça. III - Crime próprio: sujeito ativo homem e passivo mulher.",
+            options: ["Apenas I e II.", "Apenas II e III.", "Todas as assertivas.", "Apenas I."],
+            answer: 0,
+            explanation: "No estupro (Art. 213), a ação nuclear é 'constranger alguém' à conjunção carnal ou ato libidinoso, mediante violência ou grave ameaça. É crime comum: qualquer pessoa pode ser sujeito ativo ou passivo."
+        },
+        {
+            topic: "Estupro de Vulnerável",
+            question: "Lucas, 22 anos, mantém relação sexual consentida com Júlia, 13 anos e 10 meses. Os pais denunciam. Considerando o Art. 217-A e Súmula 593 do STJ:",
+            options: ["Lucas deve ser absolvido, pois houve consentimento da vítima.", "Lucas deve ser absolvido se Júlia já tivesse experiência sexual anterior.", "A conduta configura estupro de vulnerável, sendo irrelevante o consentimento ou a experiência sexual anterior.", "O crime é desclassificado para importunação sexual por ausência de violência."],
+            answer: 2,
+            explanation: "No estupro de vulnerável (Art. 217-A), a vulnerabilidade de menores de 14 anos é absoluta. O consentimento da vítima ou sua experiência sexual anterior são irrelevantes (§5º)."
+        },
+        {
+            topic: "Art. 273 CP",
+            question: "Um comerciante vende medicamentos importados sem registro na ANVISA. Considerando o Art. 273 do CP e a posição do STF:",
+            options: ["Aplica-se a pena de 10 a 15 anos de reclusão prevista no §1º-B, I.", "O STF declarou inconstitucional a pena do §1º-B, I, repristinando a pena original de 1 a 3 anos.", "O crime exige perigo concreto à saúde, não se configurando sem perícia.", "A conduta é penalmente atípica, cabendo apenas multa administrativa."],
+            answer: 1,
+            explanation: "Art. 273: crime de perigo abstrato. O STF declarou inconstitucional a pena de 10 a 15 anos do §1º-B, I, repristinando a pena original de 1 a 3 anos de reclusão."
+        },
+        {
+            topic: "Espécies de Falsidade",
+            question: "Nos crimes contra a fé pública, um tabelião cria um documento de identidade falso do zero. Outra situação: um contador preenche dados falsos em um formulário verdadeiro. Essas condutas configuram, respectivamente:",
+            options: ["Falsidade material e falsidade ideológica.", "Falsidade ideológica e falsidade material.", "Ambas configuram falsidade material.", "Ambas configuram falsidade ideológica."],
+            answer: 0,
+            explanation: "A falsidade material atinge a estrutura física do documento. A falsidade ideológica ocorre quando o documento é materialmente verdadeiro, mas as informações são falsas."
+        },
+        {
+            topic: "Uso de Documento Falso",
+            question: "Durante revista pessoal em abordagem policial, agentes encontram no bolso de Tiago uma CNH falsificada. Tiago não havia exibido o documento voluntariamente. Considerando o Art. 304 do CP:",
+            options: ["Tiago responde por uso de documento falso consumado, pois o porte equivale ao uso.", "Tiago responde por tentativa de uso de documento falso.", "O fato é atípico quanto ao uso; Tiago poderá responder pela falsificação anterior se for o autor.", "Tiago responde por falsidade ideológica."],
+            answer: 2,
+            explanation: "O crime de uso de documento falso (Art. 304) exige conduta ativa de fazer uso. Se o documento é encontrado em busca pessoal forçada, sem exibição voluntária, não há crime de uso."
+        },
+        {
+            topic: "Concurso em Crimes Funcionais",
+            question: "Um particular, ciente da condição de funcionário público de seu amigo, ajuda-o a desviar dinheiro público. Considerando o Art. 30 do CP:",
+            options: ["O particular não responde pelo crime funcional, pois não é funcionário público.", "A condição de funcionário público é elementar do crime e se comunica ao particular que tinha ciência.", "O particular responde por furto comum, e o funcionário por peculato.", "O crime é atípico para o particular por ausência de tipicidade subjetiva."],
+            answer: 1,
+            explanation: "Art. 30 do CP: as circunstâncias pessoais não se comunicam, salvo quando elementares do crime. A qualidade de funcionário público é elementar dos crimes funcionais."
+        },
+        {
+            topic: "Modalidades de Peculato",
+            question: "Analise: I - Funcionário se apropria de bem que tem a posse em razão do cargo. II - Funcionário, sem ter a posse, subtrai bem valendo-se das facilidades do cargo. III - Funcionário, por negligência, permite que terceiro subtraia bem público.",
+            options: ["I - Peculato culposo; II - Peculato-furto; III - Peculato-apropriação.", "I - Peculato-apropriação; II - Peculato-furto; III - Peculato culposo.", "I - Peculato-desvio; II - Peculato-apropriação; III - Peculato-furto.", "I - Peculato-apropriação; II - Peculato culposo; III - Peculato-desvio."],
+            answer: 1,
+            explanation: "Modalidades: 1) Peculato-apropriação: apropriar-se de bem que tem a posse; 2) Peculato-furto (§1º): subtrair sem ter a posse, valendo-se do cargo; 3) Peculato culposo (§2º): concorrer culposamente para subtração por outrem."
+        },
+        {
+            topic: "Concussão vs Corrupção Passiva",
+            question: "Na concussão (Art. 316), o funcionário exige vantagem indevida. Na corrupção passiva (Art. 317), o funcionário solicita, recebe ou aceita promessa. A principal diferença é:",
+            options: ["Na concussão há exigência (imposição); na corrupção passiva há solicitação, recebimento ou aceitação de promessa.", "Na concussão o funcionário solicita; na corrupção passiva ele exige.", "Ambos exigem o efetivo recebimento da vantagem para consumação.", "A concussão é crime culposo; a corrupção passiva é dolosa."],
+            answer: 0,
+            explanation: "Concussão: núcleo 'exigir' - o funcionário impõe a vantagem. Corrupção passiva: núcleos 'solicitar', 'receber' ou 'aceitar promessa'."
+        },
+        {
+            topic: "Corrupção Ativa",
+            question: "Um motorista oferece R$ 200,00 a um policial rodoviário para não ser multado. O policial recusa e prende o motorista. Considerando o Art. 333 do CP:",
+            options: ["O crime é tentado, pois o policial recusou a oferta.", "O crime de corrupção ativa consumou-se com o oferecimento, independentemente da aceitação.", "O motorista não cometeu crime, pois a oferta não foi aceita.", "O crime é de concussão, pois houve iniciativa do particular."],
+            answer: 1,
+            explanation: "Corrupção ativa (Art. 333): núcleos 'oferecer' ou 'prometer'. É crime formal, consumando-se no momento em que a oferta chega ao conhecimento do funcionário."
+        },
+        {
+            topic: "Exercício Arbitrário",
+            question: "Pedro, cansado de cobrar judicialmente uma dívida de R$ 1.500,00, invade o depósito do devedor e retira bens de valor equivalente, sem violência contra a pessoa. A conduta configura:",
+            options: ["Furto qualificado por rompimento de obstáculo.", "Exercício arbitrário das próprias razões (Art. 345), punível mediante queixa.", "Latrocínio, por haver subtração de bens.", "Fato lícito, pois havia pretensão legítima."],
+            answer: 1,
+            explanation: "Exercício arbitrário (Art. 345): fazer justiça pelas próprias mãos para satisfazer pretensão legítima. Sem violência, ação penal privada (queixa)."
+        },
+        {
+            topic: "Furto Qualificado",
+            question: "Agente escala muro, arromba janela e subtrai joias de residência durante a madrugada. Qual a modalidade de furto praticada?",
+            options: ["Furto simples (Art. 155, caput).", "Furto qualificado por rompimento de obstáculo (Art. 155, §4º, I).", "Furto privilegiado (§2º).", "Roubo impróprio."],
+            answer: 1,
+            explanation: "O furto qualificado (Art. 155, §4º, I) ocorre quando há rompimento de obstáculo à subtração da coisa, como escalar muros e arrombar janelas."
+        },
+        {
+            topic: "Furto de Uso",
+            question: "Pedro pega o carro do vizinho sem autorização para dar uma volta rápida e devolve ao mesmo local 30 minutos depois, intacto. A jurisprudência entende que:",
+            options: ["Configura furto consumado, pois houve subtração.", "Configura furto de uso, que é fato atípico por ausência de animus de apropriação definitiva.", "Configura roubo, pois o carro foi retirado sem consentimento.", "Configura estelionato."],
+            answer: 1,
+            explanation: "O furto de uso é fato atípico porque falta o elemento subjetivo especial do furto: o ânimo de assenhoreamento definitivo. O agente usa e devolve a coisa."
+        },
+        {
+            topic: "Roubo Majorado",
+            question: "Dois agentes, armados com revólver, rendem o vigilante de um banco e subtraem malote de dinheiro. Incide a majorante de:",
+            options: ["Concurso de pessoas apenas.", "Emprego de arma apenas.", "Concurso de pessoas e emprego de arma (Art. 157, §2º).", "Nenhuma majorante, é roubo simples."],
+            answer: 2,
+            explanation: "O roubo é majorado quando há concurso de duas ou mais pessoas e/ou emprego de arma (Art. 157, §2º, I e II)."
+        },
+        {
+            topic: "Latrocínio",
+            question: "No latrocínio (Art. 157, §3º), a morte da vítima ocorre durante a subtração. O STF entende que se trata de crime:",
+            options: ["Simples (latrocínio é tipo penal autônomo).", "Complexo (roubo + homicídio).", "Qualificado pelo resultado (homicídio é causa de aumento).", "Progressivo."],
+            answer: 1,
+            explanation: "O latrocínio é crime complexo, formado pela união de roubo + homicídio. O STF considera que o latrocínio é um crime autônomo, e não mera qualificadora do roubo."
+        },
+        {
+            topic: "Latrocínio Tentado",
+            question: "No latrocínio tentado, a jurisprudência do STJ (Súmula 610) estabelece que:",
+            options: ["Não se admite tentativa em latrocínio.", "É punível a tentativa quando o resultado morte não ocorre, mas há lesão ao patrimônio.", "O latrocínio tentado equipara-se ao roubo majorado.", "Responde por homicídio tentado em concurso com furto."],
+            answer: 1,
+            explanation: "Súmula 610 STJ: O latrocínio admite tentativa quando o resultado morte não ocorre, mas há efetiva subtração de bens."
+        },
+        {
+            topic: "Extorsão (Art. 158)",
+            question: "Jorge envia carta anônima a um comerciante ameaçando incendiar seu estabelecimento caso não lhe pague R$ 5.000,00. O comerciante paga. Jorge cometeu:",
+            options: ["Furto qualificado.", "Extorsão (Art. 158), pois constrangeu a vítima mediante ameaça a obter vantagem indevida.", "Roubo, pois houve violência.", "Estelionato, pois houve engano."],
+            answer: 1,
+            explanation: "Extorsão (Art. 158): constranger alguém, mediante violência ou grave ameaça, a fazer, tolerar que se faça ou deixar de fazer algo, com o fim de obter vantagem indevida."
+        },
+        {
+            topic: "Extorsão Consumação",
+            question: "Na extorsão (Art. 158), o momento consumativo ocorre quando:",
+            options: ["A vítima sofre a violência ou ameaça.", "O agente recebe a vantagem indevida.", "A vítima realiza o ato exigido, independentemente da obtenção da vantagem.", "O agente inicia os atos executórios."],
+            answer: 2,
+            explanation: "A extorsão é crime formal: consuma-se quando a vítima, constrangida, realiza o ato exigido. O recebimento da vantagem é mero exaurimento."
+        },
+        {
+            topic: "Estupro - Conjunção Carnal",
+            question: "No crime de estupro (Art. 213), a conjunção carnal consuma-se com:",
+            options: ["O simples toque nos órgãos genitais.", "A introdução total ou parcial do pênis na vagina.", "A ejaculação.", "O contato físico entre os corpos."],
+            answer: 1,
+            explanation: "A conjunção carnal consuma-se com a introdução, total ou parcial, do membro viril na cavidade vaginal, independentemente de ejaculação."
+        },
+        {
+            topic: "Estupro de Vulnerável - Presunção",
+            question: "A presunção de violência no estupro de vulnerável (Art. 217-A) é:",
+            options: ["Relativa (admite prova em contrário).", "Absoluta (não admite prova em contrário).", "Condicionada à comprovação de efetiva violência.", "Inexistente no ordenamento jurídico."],
+            answer: 1,
+            explanation: "A vulnerabilidade no Art. 217-A é absoluta (jure et de jure), não admitindo prova em contrário. Súmula 593 STJ."
+        },
+        {
+            topic: "Estupro de Vulnerável - Erro",
+            question: "Se o agente, por erro plenamente justificável, acredita que a vítima tem mais de 14 anos, a doutrina majoritária entende que:",
+            options: ["Responde por estupro de vulnerável independentemente do erro.", "Há erro de tipo essencial, excluindo o dolo.", "Responde por crime culposo.", "Há erro de proibição, excluindo a culpabilidade."],
+            answer: 1,
+            explanation: "O erro de tipo escusável (Art. 20, CP) sobre a idade da vítima exclui o dolo. Se inevitável, exclui também a culpa; se evitável, responde por crime culposo (mas o Art. 217-A não prevê forma culposa)."
+        },
+        {
+            topic: "Importunação Sexual",
+            question: "No transporte lotado, um homem passa a mão nas pernas e nádegas de uma passageira, sem violência ou grave ameaça, para satisfazer sua lascívia. Tipifica-se como:",
+            options: ["Estupro (Art. 213).", "Importunação sexual (Art. 215-A).", "Mero fato atípico.", "Contravenção de perturbação da tranquilidade."],
+            answer: 1,
+            explanation: "Importunação sexual (Art. 215-A): praticar ato libidinoso contra alguém sem sua anuência, sem violência ou grave ameaça, para satisfazer a própria lascívia."
+        },
+        {
+            topic: "Assédio Sexual",
+            question: "Chefe exige relações sexuais de sua subordinada, ameaçando demiti-la caso recuse. Tipifica-se como:",
+            options: ["Importunação sexual.", "Assédio sexual (Art. 216-A).", "Estupro.", "Constrangimento ilegal."],
+            answer: 1,
+            explanation: "Assédio sexual (Art. 216-A): constranger alguém com o fim de obter vantagem ou favorecimento sexual, prevalecendo-se de hierarquia ou ascendência."
+        },
+        {
+            topic: "Art. 273 - Modalidade Culposa",
+            question: "O Art. 273 admite modalidade culposa? Se sim, para quais condutas?",
+            options: ["Não admite modalidade culposa.", "Sim, para todas as condutas do caput.", "Sim, para todas as condutas do §1º, exceto para a falsificação.", "Sim, apenas para a conduta de corromper."],
+            answer: 2,
+            explanation: "Art. 273, §2º: a modalidade culposa é possível para as condutas do parágrafo anterior, exceto para a falsificação de produtos medicinais."
+        },
+        {
+            topic: "Art. 273 - Consumação",
+            question: "O crime do Art. 273 é classificado como:",
+            options: ["Crime material, exigindo dano efetivo.", "Crime de perigo abstrato, consumando-se com a mera conduta.", "Crime de perigo concreto, exigindo demonstração de risco.", "Crime formal, exigindo resultado naturalístico."],
+            answer: 1,
+            explanation: "Art. 273 é crime de perigo abstrato ou presumido: consuma-se com a prática da conduta (falsificar, corromper, alterar), independentemente de efetivo dano ou perigo concreto."
+        },
+        {
+            topic: "Falsificação de Documento Público",
+            question: "Falsificar documento público (Art. 297) tem como sujeito ativo:",
+            options: ["Apenas funcionário público.", "Qualquer pessoa.", "Apenas particular.", "Apenas servidor público."],
+            answer: 1,
+            explanation: "O crime de falsificação documental (Art. 297) é crime comum, podendo ser praticado por qualquer pessoa. Se o agente é funcionário público e se vale do cargo, a pena é aumentada (§ único)."
+        },
+        {
+            topic: "Falsificação de Documento Particular",
+            question: "A falsificação de documento particular (Art. 298) é crime:",
+            options: ["Mais grave que a falsificação de documento público.", "Menos grave, com pena de reclusão de 1 a 5 anos.", "De menor potencial ofensivo.", "Impróprio, exigindo resultado naturalístico."],
+            answer: 2,
+            explanation: "A falsificação de documento particular (Art. 298) tem pena de reclusão de 1 a 5 anos e multa, sendo considerada crime de menor potencial ofensivo (Lei 9.099/95)."
+        },
+        {
+            topic: "Falsidade Ideológica",
+            question: "Contador insere dados falsos em declaração de IR verdadeira. O crime é:",
+            options: ["Falsificação de documento público.", "Falsidade ideológica (Art. 299).", "Falsificação de documento particular.", "Estelionato."],
+            answer: 1,
+            explanation: "Falsidade ideológica (Art. 299): omitir declaração falsa ou inserir informação falsa em documento verdadeiro, com o fim de prejudicar direito ou criar obrigação."
+        },
+        {
+            topic: "Uso de Documento Falso - Consumação",
+            question: "O crime de uso de documento falso (Art. 304) consuma-se quando:",
+            options: ["O documento é fabricado.", "O agente faz uso efetivo do documento como se verdadeiro fosse.", "O documento é apreendido pela polícia.", "O terceiro sofre prejuízo."],
+            answer: 1,
+            explanation: "O uso de documento falso consuma-se com a efetiva utilização do documento falsificado como se verdadeiro fosse. É crime formal que não exige resultado naturalístico."
+        },
+        {
+            topic: "Falsificação vs Uso",
+            question: "Quem falsifica e depois usa o mesmo documento responde por:",
+            options: ["Apenas falsificação.", "Apenas uso.", "Ambos os crimes em concurso material.", "Crime único (o uso é absorvido pela falsificação como exaurimento)."],
+            answer: 3,
+            explanation: "Aplica-se o princípio da consunção: o uso é absorvido pela falsificação (crime-fim absorve o crime-meio). Responde apenas pela falsificação."
+        },
+        {
+            topic: "Peculato-Apropriação",
+            question: "Funcionário público que se apropria de bem público que está sob sua guarda em razão do cargo comete:",
+            options: ["Furto qualificado.", "Peculato-apropriação (Art. 312, caput, 1ª figura).", "Peculato-desvio.", "Prevaricação."],
+            answer: 1,
+            explanation: "Peculato-apropriação: o funcionário se apropria de dinheiro, valor ou qualquer bem móvel, público ou particular, de que tem a posse em razão do cargo."
+        },
+        {
+            topic: "Peculato-Desvio",
+            question: "Funcionário desvia verba pública destinada à saúde para pagar salários de outro setor. Comete:",
+            options: ["Peculato-apropriação.", "Peculato-desvio (Art. 312, caput, 2ª figura).", "Peculato-furto.", "Ato de improbidade apenas."],
+            answer: 1,
+            explanation: "Peculato-desvio: dar aos bens públicos destinação diversa da prevista, em proveito próprio ou alheio. Difere da apropriação porque há destinação diversa, não apropriação."
+        },
+        {
+            topic: "Peculato-Furto",
+            question: "Técnico de informática de repartição não tem a posse do notebook da chefia, mas aproveita a facilidade de acesso para subtraí-lo. Comete:",
+            options: ["Furto qualificado.", "Peculato-furto (Art. 312, §1º).", "Peculato-apropriação.", "Roubo."],
+            answer: 1,
+            explanation: "Peculato-furto (§1º): quando o funcionário não tem a posse do bem, mas o subtrai valendo-se das facilidades proporcionadas pelo cargo."
+        },
+        {
+            topic: "Peculato Culposo",
+            question: "Funcionário deixa a porta do cofre aberta por negligência, permitindo que terceiro subtraia dinheiro. Responde por:",
+            options: ["Peculato doloso.", "Peculato culposo (Art. 312, §2º).", "Fato atípico, responde apenas civilmente.", "Furto qualificado."],
+            answer: 1,
+            explanation: "Peculato culposo (§2º): quando o funcionário concorre culposamente (negligência, imprudência ou imperícia) para que terceiro subtraia o bem."
+        },
+        {
+            topic: "Reparação no Peculato Culposo",
+            question: "No peculato culposo, se o funcionário reparar o dano antes da sentença irrecorrível:",
+            options: ["Nada ocorre, a pena é aplicada normalmente.", "Extingue-se a punibilidade (Art. 312, §3º).", "A pena é reduzida pela metade.", "A ação penal é renunciada."],
+            answer: 1,
+            explanation: "Art. 312, §3º: no peculato culposo, a reparação do dano antes da sentença irrecorrível extingue a punibilidade."
+        },
+        {
+            topic: "Concussão",
+            question: "Fiscal exige R$ 5.000,00 de contribuinte para não autuá-lo. O contribuinte paga. O crime consumou-se:",
+            options: ["Com o pagamento.", "Com a exigência, sendo o pagamento mero exaurimento.", "Apenas como tentativa, se não houve pagamento.", "Não há crime, pois o contribuinte concordou."],
+            answer: 1,
+            explanation: "Concussão (Art. 316): crime formal que se consuma com a exigência da vantagem indevida, independentemente do recebimento."
+        },
+        {
+            topic: "Corrupção Passiva Privilegiada",
+            question: "Funcionário pratica ato de ofício atendendo pedido de terceiro, mas sem receber vantagem. Configura:",
+            options: ["Corrupção passiva privilegiada (Art. 317, §2º).", "Prevaricação.", "Concussão.", "Fato atípico."],
+            answer: 0,
+            explanation: "Corrupção passiva privilegiada (§2º): se o funcionário pratica, deixa de praticar ou retarda ato de ofício, atendendo pedido ou influência de outrem, sem receber vantagem."
+        },
+        {
+            topic: "Corrupção Ativa - Consumação",
+            question: "A corrupção ativa (Art. 333) consuma-se:",
+            options: ["Quando o funcionário aceita a proposta.", "Quando o particular faz a oferta ou promessa.", "Quando a vantagem é efetivamente entregue.", "Quando o ato de ofício é praticado."],
+            answer: 1,
+            explanation: "Corrupção ativa é crime formal: consuma-se com o oferecimento ou promessa de vantagem indevida, independentemente de aceitação."
+        },
+        {
+            topic: "Prevaricação",
+            question: "Delegado retarda inquérito deliberadamente para beneficiar amigo pessoal. Comete:",
+            options: ["Concussão.", "Prevaricação (Art. 319).", "Corrupção passiva.", "Condescendência criminosa."],
+            answer: 1,
+            explanation: "Prevaricação (Art. 319): retardar ou deixar de praticar ato de ofício, ou praticá-lo contra lei, para satisfazer interesse ou sentimento pessoal."
+        },
+        {
+            topic: "Condescendência Criminosa",
+            question: "Chefe de repartição deixa de responsabilizar subordinado que cometeu infração penal no exercício do cargo. Comete:",
+            options: ["Prevaricação.", "Condescendência criminosa (Art. 320).", "Corrupção passiva.", "Fato atípico."],
+            answer: 1,
+            explanation: "Condescendência criminosa (Art. 320): deixar o funcionário, por indulgência, de responsabilizar subordinado que cometeu infração no exercício do cargo."
+        },
+        {
+            topic: "Advocacia Administrativa",
+            question: "Funcionário público patrocina interesse privado perante a administração, valendo-se da qualidade de funcionário. Comete:",
+            options: ["Corrupção passiva.", "Advocacia administrativa (Art. 321).", "Prevaricação.", "Tráfico de influência."],
+            answer: 1,
+            explanation: "Advocacia administrativa (Art. 321): patrocinar, direta ou indiretamente, interesse privado perante a administração pública, valendo-se da qualidade de funcionário."
+        },
+        {
+            topic: "Exercício Arbitrário - Violência",
+            question: "Se no exercício arbitrário das próprias razões houver emprego de violência física, a ação penal será:",
+            options: ["Privada (queixa).", "Pública incondicionada.", "Pública condicionada à representação.", "Privada subsidiária da pública."],
+            answer: 1,
+            explanation: "Art. 345, parágrafo único: se há emprego de violência física, a ação penal é pública incondicionada. Sem violência, é privada (queixa)."
+        },
+        {
+            topic: "Falso Testemunho",
+            question: "Testemunha que mente em juízo sobre fato juridicamente relevante comete:",
+            options: ["Falso testemunho (Art. 342).", "Falsa perícia.", "Denunciação caluniosa.", "Fraude processual."],
+            answer: 0,
+            explanation: "Falso testemunho (Art. 342): fazer afirmação falsa, negar ou calar a verdade como testemunha, perito, tradutor ou intérprete em processo judicial ou administrativo."
+        },
+        {
+            topic: "Retratação no Falso Testemunho",
+            question: "O falso testemunho admite retratação. A retratação antes da sentença:",
+            options: ["Não tem qualquer efeito.", "Extingue a punibilidade.", "Aumenta a pena.", "Transforma o crime em culposo."],
+            answer: 1,
+            explanation: "Art. 342, §2º: o falso testemunho admite retratação antes da sentença no processo em que ocorreu, caso em que o fato deixa de ser punível."
+        },
+        {
+            topic: "Denunciação Caluniosa",
+            question: "Atribuir falsamente a alguém a prática de crime perante autoridade policial configura:",
+            options: ["Falso testemunho.", "Denunciação caluniosa (Art. 339).", "Comunicação falsa de crime.", "Calúnia."],
+            answer: 1,
+            explanation: "Denunciação caluniosa (Art. 339): dar causa a investigação policial ou processual contra alguém, imputando-lhe crime de que o sabe inocente."
+        },
+        {
+            topic: "Comunicação Falsa de Crime",
+            question: "Quem comunica à polícia um crime que sabe inexistente comete:",
+            options: ["Denunciação caluniosa.", "Comunicação falsa de crime (Art. 340).", "Falso testemunho.", "Calúnia."],
+            answer: 1,
+            explanation: "Comunicação falsa de crime (Art. 340): provocar a autoridade policial, comunicando a ocorrência de crime que sabe não ter ocorrido."
+        },
+        {
+            topic: "Furto Noturno",
+            question: "O furto praticado durante o repouso noturno (Art. 155, §1º) é:",
+            options: ["Circunstância que aumenta a pena de 1/3.", "Qualificadora do furto.", "Circunstância que diminui a pena.", "Majorante independente do local."],
+            answer: 0,
+            explanation: "Art. 155, §1º: se o furto é praticado durante o repouso noturno, a pena é aumentada de 1/3. É causa de aumento, não qualificadora."
+        },
+        {
+            topic: "Furto Qualificado - Destreza",
+            question: "Batedor de carteiras que subtrai objetos sem que a vítima perceba, usando habilidade manual, comete furto qualificado por:",
+            options: ["Rompimento de obstáculo.", "Destreza (Art. 155, §4º, II).", "Abuso de confiança.", "Escalada."],
+            answer: 1,
+            explanation: "Furto qualificado por destreza (§4º, II): quando o agente usa habilidade manual especial para subtrair a coisa sem que a vítima perceba."
+        },
+        {
+            topic: "Estupro - Violência Presumida",
+            question: "Antes da reforma de 2009, a presunção de violência no estupro de menores era:",
+            options: ["Absoluta para menores de 14 anos.", "Relativa para todas as idades.", "Inexistente.", "Apenas para menores de 12 anos."],
+            answer: 0,
+            explanation: "Antes da Lei 12.015/2009, o Art. 224 criava presunção de violência para menores de 14 anos. O STF e STJ pacificaram ser presunção relativa, mas a lei nova (217-A) tornou absoluta."
+        },
+        {
+            topic: "Ação Penal no Estupro",
+            question: "O estupro (Art. 213) e o estupro de vulnerável (Art. 217-A) são processados mediante:",
+            options: ["Ação penal privada.", "Ação penal pública incondicionada.", "Ação penal pública condicionada à representação.", "Ação penal privada subsidiária."],
+            answer: 1,
+            explanation: "Com a Lei 13.718/2018, todos os crimes sexuais contra vulneráveis e o estupro passaram a ser de ação penal pública incondicionada."
+        },
+        {
+            topic: "Crime de Perigo Abstrato",
+            question: "O crime de perigo abstrato se caracteriza por:",
+            options: ["Exigir comprovação de efetivo perigo de dano.", "Presumir o perigo pela mera realização da conduta.", "Exigir dano concreto.", "Ser sempre culposo."],
+            answer: 1,
+            explanation: "No crime de perigo abstrato, o perigo é presumido pela lei. Basta a prática da conduta para que o crime se consume, independentemente de demonstração de perigo concreto. Ex: Art. 273."
+        },
+        {
+            topic: "Roubo Impróprio",
+            question: "Agente subtrai o bem sem violência, mas para assegurar a posse agride a vítima. Configura:",
+            options: ["Furto qualificado.", "Roubo impróprio (Art. 157, §1º).", "Latrocínio.", "Extorsão."],
+            answer: 1,
+            explanation: "Roubo impróprio (§1º): se após a subtração, o agente emprega violência ou grave ameaça para assegurar a posse ou impunidade. A violência é posterior à subtração."
+        },
+        {
+            topic: "Crime de Perigo Concreto",
+            question: "Diferentemente do perigo abstrato, no crime de perigo concreto:",
+            options: ["O perigo é presumido.", "Exige-se a comprovação efetiva de situação de perigo.", "Não se admite prova em contrário.", "A consumação independe de resultado."],
+            answer: 1,
+            explanation: "No crime de perigo concreto, o perigo deve ser efetivamente demonstrado (ex: incêndio, Art. 250). Exige-se comprovação de que a situação de perigo realmente existiu."
+        },
+        {
+            topic: "Desistência Voluntária",
+            question: "Agente inicia a subtração de um bem, mas desiste voluntariamente e abandona o objeto antes de sair do local. Configura:",
+            options: ["Furto tentado.", "Desistência voluntária (Art. 15), respondendo apenas pelos atos já praticados.", "Furto consumado, pois já tocou no bem.", "Arrependimento posterior."],
+            answer: 1,
+            explanation: "Desistência voluntária (Art. 15): o agente desiste voluntariamente de prosseguir na execução. Responde apenas pelos atos já praticados (se já constituem crime por si)."
+        },
+        {
+            topic: "Arrependimento Eficaz",
+            question: "Agente já consumou o furto, mas voluntariamente devolve o bem à vítima antes de qualquer ação policial. Configura:",
+            options: ["Desistência voluntária.", "Arrependimento posterior (Art. 16), causa de redução de pena.", "Furto consumado sem benefício.", "Extinção da punibilidade."],
+            answer: 1,
+            explanation: "Arrependimento posterior (Art. 16): nos crimes sem violência ou grave ameaça, a reparação do dano até o recebimento da denúncia reduz a pena de 1/3 a 2/3."
+        },
+        {
+            topic: "Crime Impossível",
+            question: "Agente tenta furtar um cofre, mas desconhece que ele está totalmente vazio. Configura:",
+            options: ["Furto tentado.", "Crime impossível (Art. 17) por absoluta impropriedade do objeto.", "Desistência voluntária.", "Furto consumado."],
+            answer: 1,
+            explanation: "Crime impossível (Art. 17): pela absoluta impropriedade do objeto ou ineficácia do meio, é impossível consumar o crime. Não se pune a tentativa."
+        },
+        {
+            topic: "Concurso de Crimes",
+            question: "Agente, mediante uma só ação, subtrai pertences de duas vítimas diferentes. Configura:",
+            options: ["Concurso material.", "Concurso formal (Art. 70).", "Crime continuado.", "Crime único."],
+            answer: 1,
+            explanation: "Concurso formal (Art. 70): uma só ação produz dois ou mais resultados. Aplica-se a pena mais grave aumentada de 1/6 a 1/2."
+        },
+        {
+            topic: "Crime Continuado",
+            question: "Agente furta 10 lojas diferentes no mesmo bairro, com o mesmo modus operandi, durante uma semana. Configura:",
+            options: ["Concurso material.", "Crime continuado (Art. 71).", "Concurso formal.", "Crime único."],
+            answer: 1,
+            explanation: "Crime continuado (Art. 71): pela mesma condição de tempo, lugar, modo de execução e habitualidade, os crimes subsequentes são considerados um só, com pena aumentada."
+        },
+        {
+            topic: "Suspensão Condicional da Pena",
+            question: "Condenado a 2 anos de reclusão por furto privilegiado, primário e sem antecedentes, poderá obter:",
+            options: ["Indulto.", "Sursis (suspensão condicional da pena - Art. 77).", "Livramento condicional.", "Perdão judicial."],
+            answer: 1,
+            explanation: "Sursis (Art. 77): suspensão condicional da pena para condenados a pena não superior a 2 anos, desde que primários e sem antecedentes."
+        },
+        {
+            topic: "Substituição da Pena",
+            question: "Condenado a 1 ano e 6 meses por furto privilegiado, não reincidente, poderá ter a pena privativa de liberdade substituída por:",
+            options: ["Pena restritiva de direitos (Art. 44).", "Pena de multa apenas.", "Sursis.", "Perdão judicial."],
+            answer: 0,
+            explanation: "Art. 44: a pena privativa de liberdade inferior a 4 anos pode ser substituída por restritiva de direitos (prestação de serviços, limitação de fim de semana, etc.) se o réu não for reincidente."
+        },
+        {
+            topic: "Circunstâncias Judiciais",
+            question: "No furto privilegiado, se as circunstâncias judiciais do Art. 59 são favoráveis, o juiz pode:",
+            options: ["Aplicar apenas a pena de multa (Art. 155, §2º).", "Aumentar a pena em dobro.", "Converter em detenção perpétua.", "Absolver o réu."],
+            answer: 0,
+            explanation: "Art. 155, §2º: o juiz pode substituir a pena de reclusão por detenção, reduzi-la de 1/3 a 2/3, ou aplicar apenas a pena de multa."
+        },
+        {
+            topic: "Princípio da Insignificância",
+            question: "O STF admite o princípio da insignificância para furto quando: I - Mínima ofensividade; II - Ausência de periculosidade; III - Reduzido grau de reprovabilidade; IV - Inexpressividade da lesão. Isso exige:",
+            options: ["Apenas um requisito.", "Preenchimento cumulativo dos 4 vetores.", "Preenchimento alternativo dos vetores.", "Apenas o valor do bem."],
+            answer: 1,
+            explanation: "O STF exige o preenchimento cumulativo dos 4 vetores para aplicação do princípio da insignificância. Além disso, o furto privilegiado (§2º) já contempla o pequeno valor."
+        },
+        {
+            topic: "Concurso de Agentes no Furto",
+            question: "No furto qualificado pelo concurso de agentes (Art. 155, §4º, IV), exige-se:",
+            options: ["Apenas duas ou mais pessoas.", "Duas ou mais pessoas em liame subjetivo.", "Organização criminosa.", "Chefia e subordinação."],
+            answer: 1,
+            explanation: "Furto qualificado por concurso de agentes (§4º, IV): exige duas ou mais pessoas em concurso (liame subjetivo entre elas), não bastando a mera presença de múltiplos agentes."
+        },
+        {
+            topic: "Extorsão - Distinção",
+            question: "Diferença entre extorsão (Art. 158) e roubo (Art. 157):",
+            options: ["Na extorsão a vítima entrega o bem; no roubo o agente toma.", "No roubo a vítima entrega; na extorsão o agente toma.", "Ambos são idênticos.", "Extorsão exige arma."],
+            answer: 0,
+            explanation: "No roubo, o agente subtrai (toma) o bem. Na extorsão, o agente constrange a vítima a entregar, fazer ou tolerar algo. A vítima atua como instrumento do crime."
+        },
+        {
+            topic: "Estupro - Sujeito Ativo",
+            question: "Quanto ao sujeito ativo do estupro (Art. 213), é correto afirmar que:",
+            options: ["Só pode ser homem.", "Só pode ser mulher.", "Qualquer pessoa pode ser sujeito ativo (crime comum).", "Apenascônjuge ou companheiro."],
+            answer: 2,
+            explanation: "Estupro é crime comum: qualquer pessoa (homem ou mulher) pode ser sujeito ativo, e qualquer pessoa pode ser vítima."
+        },
+        {
+            topic: "Ato Libidinoso",
+            question: "Para caracterização do estupro, o ato libidinoso diverso da conjunção carnal:",
+            options: ["Precisa ser necessariamente com penetração.", "Pode ser qualquer ato com intuito libidinoso (toques, beijos, etc.).", "Exige contato genital.", "Só se configura com violência real."],
+            answer: 1,
+            explanation: "Ato libidinoso é gênero que abrange qualquer ato destinado a satisfazer a libido, incluindo toques íntimos, beijos lascivos, etc., não exigindo penetração."
+        }
+    ];
+
+    const flashcards = [
+        { q: "1) Diferença entre furto (art. 155) e roubo (art. 157)?", a: "Furto: subtração SEM violência ou grave ameaça. Roubo: subtração MEDIANTE violência ou grave ameaça." },
+        { q: "2) Furto privilegiado (Art. 155, §2º)?", a: "Agente PRIMÁRIO + coisa de PEQUENO VALOR (≤ 1 salário mínimo). Juiz pode reduzir pena de 1/3 a 2/3, substituir reclusão por detenção, ou aplicar só multa." },
+        { q: "3) Momento consumativo do roubo?", a: "Inversão da POSSE (Súmula 582 STJ). Dispensável posse mansa e pacífica." },
+        { q: "4) Extorsão mediante sequestro (Art. 159)?", a: "Sequestrar pessoa para obter vantagem como condição do resgate. Pena: 8 a 15 anos. Crime FORMAL e PERMANENTE." },
+        { q: "5) Consumação da extorsão mediante sequestro?", a: "Consuma-se com a PRIVAÇÃO DA LIBERDADE visando resgate. Não exige recebimento." },
+        { q: "6) Estupro (Art. 213)?", a: "Constranger alguém à conjunção carnal ou ato libidinoso, mediante violência ou grave ameaça. Crime comum." },
+        { q: "7) Estupro de Vulnerável (Art. 217-A)?", a: "Ter conjunção carnal ou ato libidinoso com menor de 14 anos, enfermo/deficiente ou quem não pode resistir. Consentimento é IRRELEVANTE (§5º). Súmula 593 STJ." },
+        { q: "8) Art. 273 CP?", a: "Crime de perigo abstrato. Pena do §1º-B, I (sem registro): STF declarou inconstitucional 10-15 anos, repristinou 1-3 anos. Modalidade culposa possível (§2º), exceto falsificar." },
+        { q: "9) Espécies de falsidade?", a: "1) Material: documento forjado. 2) Ideológica: conteúdo falso em documento verdadeiro. 3) Pessoal: falsa identidade." },
+        { q: "10) Uso de Documento Falso (Art. 304)?", a: "Exige conduta ATIVA de exibir. Apreensão em busca pessoal não configura uso." },
+        { q: "11) Concurso em crimes funcionais?", a: "Sim. Condição de funcionário é elementar (Art. 30 CP), comunica-se ao particular ciente." },
+        { q: "12) Modalidades de peculato?", a: "1) Apropriação: tem a posse e se apropria. 2) Desvio: dá destinação diversa. 3) Furto (§1º): subtrai sem posse, valendo-se do cargo. 4) Culposo (§2º): negligencia." },
+        { q: "13) Concussão vs Corrupção Passiva?", a: "Concussão: funcionário EXIGE. Corrupção passiva: SOLICITA, RECEBE ou ACEITA PROMESSA." },
+        { q: "14) Corrupção Ativa (Art. 333)?", a: "Oferecer ou prometer vantagem a funcionário. Crime formal: consuma-se com a oferta, independente de aceitação." },
+        { q: "15) Exercício Arbitrário (Art. 345)?", a: "Fazer justiça pelas próprias mãos. Sem violência: ação privada. Com violência: ação pública." },
+        { q: "16) Furto qualificado (Art. 155, §4º)?", a: "Incide quando há rompimento de obstáculo, destreza, abuso de confiança, concurso de pessoas, etc." },
+        { q: "17) Furto de uso?", a: "Fato atípico. Falta ânimo de apropriação definitiva. Agente usa e devolve." },
+        { q: "18) Latrocínio?", a: "Crime complexo (roubo + homicídio). Art. 157, §3º. Súmula 610 STJ: admite tentativa." },
+        { q: "19) Extorsão (Art. 158)?", a: "Constranger mediante violência ou ameaça a fazer algo para obter vantagem. Crime formal." },
+        { q: "20) Importunação Sexual (Art. 215-A)?", a: "Ato libidinoso sem violência/ameaça, contra alguém sem anuência, para satisfazer lascívia." },
+        { q: "21) Assédio Sexual (Art. 216-A)?", a: "Constranger com fim de obter vantagem sexual, prevalecendo-se de hierarquia." },
+        { q: "22) Prevaricação (Art. 319)?", a: "Retardar ou deixar de praticar ato de ofício para satisfazer interesse pessoal." },
+        { q: "23) Peculato culposo - reparação do dano?", a: "Art. 312, §3º: reparação antes da sentença extingue a punibilidade." },
+        { q: "24) Corrupção passiva privilegiada?", a: "Praticar ato atendendo pedido, sem receber vantagem (Art. 317, §2º)." },
+        { q: "25) Condescendência Criminosa (Art. 320)?", a: "Deixar de responsabilizar subordinado por indulgência." },
+        { q: "26) Ação penal nos crimes sexuais?", a: "Pública incondicionada (Lei 13.718/2018)." },
+        { q: "27) Falso Testemunho (Art. 342)?", a: "Mentir em juízo. Admite retratação (§2º): extingue punibilidade se antes da sentença." },
+        { q: "28) Denunciação Caluniosa (Art. 339)?", a: "Atribuir falsamente crime a alguém, sabendo-o inocente." },
+        { q: "29) Crime impossível (Art. 17)?", a: "Absoluta impropriedade do objeto ou ineficácia do meio. Não se pune." },
+        { q: "30) Desistência voluntária (Art. 15)?", a: "Agente desiste voluntariamente. Responde só pelos atos já praticados." }
+    ];
+
+    let currentQuizIndex = 0;
+    let currentFlashcardIndex = 0;
+    let userProgress = JSON.parse(localStorage.getItem('penal_super_stats')) || {
+        total: 0, correct: 0, wrong: 0, answeredQuestions: {}
+    };
+
+    function buildSelector() {
+        const container = document.getElementById("q-selector");
+        container.innerHTML = "";
+        for (let i = 0; i < questions.length; i++) {
+            const btn = document.createElement("button");
+            btn.innerText = i + 1;
+            btn.onclick = () => { currentQuizIndex = i; loadQuestion(); };
+            btn.id = "q-sel-" + i;
+            container.appendChild(btn);
+        }
+    }
+
+    function updateSelector() {
+        for (let i = 0; i < questions.length; i++) {
+            const btn = document.getElementById("q-sel-" + i);
+            btn.className = i === currentQuizIndex ? "active-q" : "";
+            if (userProgress.answeredQuestions[i] !== undefined) btn.classList.add("answered");
+        }
+    }
+
+    function switchTab(tabId) {
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        if (event && event.currentTarget) event.currentTarget.classList.add('active');
+        if (tabId === 'stats') renderStats();
+    }
+
+    function loadQuestion() {
+        const q = questions[currentQuizIndex];
+        document.getElementById("q-badge").innerText = `Questão ${currentQuizIndex + 1} de ${questions.length}`;
+        document.getElementById("q-topic").innerText = q.topic;
+        document.getElementById("question-text").innerText = q.question;
+        document.getElementById("q-counter").innerText = `${currentQuizIndex + 1} / ${questions.length}`;
+
+        const opts = document.getElementById("options-container");
+        opts.innerHTML = "";
+
+        const isAnswered = userProgress.answeredQuestions[currentQuizIndex] !== undefined;
+        const savedAnswer = userProgress.answeredQuestions[currentQuizIndex];
+
+        q.options.forEach((opt, idx) => {
+            const btn = document.createElement("button");
+            btn.className = "option-btn";
+            btn.innerText = opt;
+            btn.onclick = () => selectOption(idx);
+            if (isAnswered) {
+                btn.disabled = true;
+                if (idx === q.answer) btn.classList.add("correct-ans");
+                if (idx === savedAnswer && savedAnswer !== q.answer) btn.classList.add("wrong-ans");
+            }
+            opts.appendChild(btn);
+        });
+
+        const expBox = document.getElementById("explanation");
+        if (isAnswered) {
+            document.getElementById("explanation-text").innerText = q.explanation;
+            expBox.style.display = "block";
+        } else {
+            expBox.style.display = "none";
+        }
+
+        document.getElementById("prev-btn").disabled = currentQuizIndex === 0;
+        document.getElementById("next-btn").disabled = currentQuizIndex === questions.length - 1;
+        updateSelector();
+    }
+
+    function selectOption(selectedIndex) {
+        const q = questions[currentQuizIndex];
+        if (userProgress.answeredQuestions[currentQuizIndex] !== undefined) return;
+
+        userProgress.answeredQuestions[currentQuizIndex] = selectedIndex;
+        userProgress.total++;
+        if (selectedIndex === q.answer) userProgress.correct++;
+        else userProgress.wrong++;
+
+        localStorage.setItem('penal_super_stats', JSON.stringify(userProgress));
+        loadQuestion();
+    }
+
+    function changeQuestion(direction) {
+        currentQuizIndex += direction;
+        if (currentQuizIndex < 0) currentQuizIndex = 0;
+        if (currentQuizIndex >= questions.length) currentQuizIndex = questions.length - 1;
+        loadQuestion();
+    }
+
+    function loadFlashcard() {
+        const fc = flashcards[currentFlashcardIndex];
+        document.querySelector('.flashcard')?.classList.remove('flipped');
+        document.getElementById("fc-number").innerText = `Card ${currentFlashcardIndex + 1} de ${flashcards.length}`;
+        setTimeout(() => {
+            document.getElementById("fc-front").innerText = fc.q;
+            document.getElementById("fc-back").innerText = fc.a;
+        }, 150);
+    }
+
+    function changeFlashcard(direction) {
+        currentFlashcardIndex += direction;
+        if (currentFlashcardIndex < 0) currentFlashcardIndex = flashcards.length - 1;
+        if (currentFlashcardIndex >= flashcards.length) currentFlashcardIndex = 0;
+        loadFlashcard();
+    }
+
+    function renderStats() {
+        document.getElementById("st-total").innerText = userProgress.total;
+        document.getElementById("st-correct").innerText = userProgress.correct;
+        document.getElementById("st-wrong").innerText = userProgress.wrong;
+        const pct = userProgress.total > 0 ? Math.round((userProgress.correct / userProgress.total) * 100) : 0;
+        document.getElementById("st-pct").innerText = `${pct}%`;
+    }
+
+    function resetStats() {
+        if (confirm("Deseja zerar seu histórico?")) {
+            userProgress = { total: 0, correct: 0, wrong: 0, answeredQuestions: {} };
+            localStorage.setItem('penal_super_stats', JSON.stringify(userProgress));
+            currentQuizIndex = 0;
+            loadQuestion();
+            renderStats();
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.tab-btn')[0]?.classList.add('active');
+    });
+
+    buildSelector();
+    loadQuestion();
+    loadFlashcard();
+</script>
+</body>
+</html>

@@ -1,5 +1,4 @@
-__pycache__/
+.DS_Store
+Thumbs.db
 *.pyc
-.env
-venv/
-.vscode/
+__pycache__/
